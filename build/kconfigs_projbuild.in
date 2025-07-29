@@ -1,0 +1,6 @@
+source "D:/Espressif/frameworks/esp-idf-v5.3.3/components/bootloader/Kconfig.projbuild"
+source "D:/Espressif/frameworks/esp-idf-v5.3.3/components/esp_app_format/Kconfig.projbuild"
+source "D:/Espressif/frameworks/esp-idf-v5.3.3/components/esp_rom/Kconfig.projbuild"
+source "D:/Espressif/frameworks/esp-idf-v5.3.3/components/esptool_py/Kconfig.projbuild"
+source "D:/Espressif/frameworks/esp-idf-v5.3.3/components/partition_table/Kconfig.projbuild"
+source "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/managed_components/espressif__esp-sr/Kconfig.projbuild"

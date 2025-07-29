@@ -1,0 +1,16 @@
+idf_component_register(
+  SRCS
+  "main.c"
+  "./com/com_debug.c"
+  "./bsp/bsp_es8311.c"
+  "./bsp/bsp_wifi.c"
+  "./bsp/bsp_ws2812.c"
+  "./audio/audio_sr.c"
+  "./audio/audio_decode.c"
+  "./audio/audio_encode.c"
+  INCLUDE_DIRS
+  "."
+  "./bsp"
+  "./audio"
+  "./com"
+  "./websocket")

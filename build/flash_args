@@ -1,0 +1,6 @@
+--flash_mode dout --flash_freq 80m --flash_size 8MB
+0x0 bootloader/bootloader.bin
+0x10000 M_AI_doorbell_xiaozhi.bin
+0x8000 partition_table/partition-table.bin
+0xd000 ota_data_initial.bin
+0x3a2000 srmodels/srmodels.bin

@@ -103,6 +103,7 @@ void audio_process_start(audio_processor_t *audio_processor) {
 }
 
 void *audio_process_read_data(audio_processor_t *audio_processor, size_t *len) {
+  
   size_t read_len = 0;
   void *read_data = xRingbufferReceive(audio_processor->encode_output_buffer,
                                        len, portMAX_DELAY);

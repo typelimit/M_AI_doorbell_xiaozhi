@@ -28,24 +28,28 @@ struct audio_sr {
   RingbufHandle_t ringbuffer;
 };
 
-
-// 喂数据任务
+/**
+ * @brief 给语音识别模块喂数据
+ *
+ * @param args
+ */
 void audio_sr_feed_task(void *args) {
 
   MY_LOGE("audio feed task 开始运行...");
-
+  // 接收传进来的第一层结构体指针
   audio_sr_t *audio_sr = (audio_sr_t *)args;
+  // 把第一层结构体指针当中成员的数据取出来
   esp_afe_sr_iface_t *afe_handle = audio_sr->afe_handle;
   esp_afe_sr_data_t *afe_data = audio_sr->afe_data;
 
-  // 获取单通道输入数据大小
+  // 成员作为第二层结构体指针把数据传给内部声明的普通变量————其内容是单通道数据大小
   int feed_chunksize = afe_handle->get_feed_chunksize(afe_data);
   // 获取通道数
   int feed_nch = afe_handle->get_feed_channel_num(afe_data);
   // 计算单次输入数据大小(最大值)
   size_t len = feed_chunksize * feed_nch * sizeof(int16_t);
 
-  // 根据计算出的大小对声明的指针进行内存分配
+  // 根据计算出的大小声明出一个可以容纳它的指针块————其内容是单次输入的数据
   int16_t *feed_buff = (int16_t *)malloc(len);
 
   while (1) {
@@ -58,7 +62,6 @@ void audio_sr_feed_task(void *args) {
     vTaskDelay(10);
   }
 }
-
 
 // 取数据任务
 void audio_sr_fetch_task(void *args) {
@@ -122,7 +125,6 @@ void audio_sr_fetch_task(void *args) {
   }
 }
 
-
 audio_sr_t *audio_sr_init(void) {
   // 1.申请资源
   audio_sr_t *audio_sr = malloc(sizeof(audio_sr_t));
@@ -159,7 +161,6 @@ void audio_sr_start(audio_sr_t *audio_sr) {
   xTaskCreate(audio_sr_fetch_task, "fetch task", 32 * 1024, audio_sr, 6, NULL);
   xTaskCreate(audio_sr_feed_task, "feed task", 32 * 1024, audio_sr, 5, NULL);
 }
-
 
 /**
  * @brief 设置输出环形缓冲区

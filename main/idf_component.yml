@@ -19,3 +19,4 @@ dependencies:
   espressif/qrcode: ^0.1.0~2
   espressif/esp-sr: ^2.1.4
   espressif/esp_audio_codec: ^2.3.0
+  espressif/esp_websocket_client: ^1.5.0

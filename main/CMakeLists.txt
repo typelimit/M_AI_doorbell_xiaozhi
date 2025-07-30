@@ -13,6 +13,7 @@ idf_component_register(
   "./audio/audio_encode.c"
   "./audio/audio_process.c"
   "./protocol/pro_https.c"
+  "./protocol/pro_ws.c"
   INCLUDE_DIRS
   "."
   "./bsp"

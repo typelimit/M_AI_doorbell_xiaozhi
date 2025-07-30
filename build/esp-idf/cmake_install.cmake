@@ -569,6 +569,11 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
+  include("D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/build/esp-idf/espressif__esp_websocket_client/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
   include("D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/build/esp-idf/espressif__led_strip/cmake_install.cmake")
 endif()
 

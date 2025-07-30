@@ -88,6 +88,7 @@ D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/build/esp-idf/espressif__dl_fft/libespr
 D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/build/esp-idf/espressif__esp-sr/libespressif__esp-sr.a
 D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/build/esp-idf/espressif__esp_audio_codec/libespressif__esp_audio_codec.a
 D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/build/esp-idf/espressif__esp_codec_dev/libespressif__esp_codec_dev.a
+D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/build/esp-idf/espressif__esp_websocket_client/libespressif__esp_websocket_client.a
 D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/build/esp-idf/espressif__led_strip/libespressif__led_strip.a
 D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/build/esp-idf/espressif__qrcode/libespressif__qrcode.a
 D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/build/esp-idf/main/libmain.a

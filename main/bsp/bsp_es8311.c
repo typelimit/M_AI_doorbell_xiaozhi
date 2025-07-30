@@ -124,7 +124,7 @@ static void bsp_es8311_dev_init(void)
 
     // 7.设置输入增益以及输出音量
     esp_codec_dev_set_in_gain(codec_dev, 10.0);
-    esp_codec_dev_set_out_vol(codec_dev, 80);
+    esp_codec_dev_set_out_vol(codec_dev, 60);
 }
 
 /**

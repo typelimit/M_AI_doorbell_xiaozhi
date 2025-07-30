@@ -21,7 +21,7 @@ struct audio_encode {
 };
 
 /**
- * @brief 设置编码器的输入缓冲
+ * @brief 设置编码器的输入缓冲————接收来自mic的数据
  *
  * @param input_buffer 输入缓冲
  * @param max_size 输入缓冲上限

@@ -3,6 +3,8 @@
   - [Bug-App-ws](#bug-app-ws)
 - [NOTE List](#note-list)
   - [NOTE-audio-encode 对环形缓冲区数据的使用](#note-audio-encode-对环形缓冲区数据的使用)
+  - [NOTE-pro-http 没看懂的free](#note-pro-http-没看懂的free)
+  - [NOTE-bsp-mutable-buffer 没看懂的可边长数组内存机制](#note-bsp-mutable-buffer-没看懂的可边长数组内存机制)
 
 # Bug List
 
@@ -52,3 +54,37 @@ read_len应该是一直等于max_size的，除非这里的超时判断用的不�
 “最多max_size字节”的数据块的指针——这句话是什么意思？我能理解指针指向内存地址上的具体某个字节，但是为什么指针还会包含“块”这个概念？
 
 “块”的边界是写入时确定，读取时才有实际意义。写的人定义了原子单位，读的人必须以写端原子为粒度操作，不能随便掰开。
+
+nvs和flash的区别是什么？
+
+
+
+## NOTE-pro-http 没看懂的free
+
+```c
+void bsp_mutable_buffer_free(mutable_buffer_t *mutable_buffer) {
+  // 这一步是什么意思？这个判断有什么意义？
+  if (mutable_buffer->buffer) {
+
+    free(mutable_buffer->buffer);
+  }
+  free(mutable_buffer);
+}
+```
+
+## NOTE-bsp-mutable-buffer 没看懂的可边长数组内存机制
+```c
+void bsp_mutable_buffer_append_data(mutable_buffer_t *mutable_buffer,
+                                    char *data, size_t len) {
+
+  char *buf = (char *)heap_caps_realloc(
+      mutable_buffer->buffer, mutable_buffer->size + len, MALLOC_CAP_SPIRAM);
+  // 数据追加至缓存
+  memcpy(buf + mutable_buffer->size, data, len);
+
+  // 修改可变缓存属性
+  mutable_buffer->size = mutable_buffer->size + len + 1;
+  buf[mutable_buffer->size] = '\0';
+  mutable_buffer->buffer = buf;
+}
+```

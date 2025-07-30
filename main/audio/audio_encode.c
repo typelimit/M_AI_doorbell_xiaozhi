@@ -16,8 +16,8 @@
 struct audio_encode {
   RingbufHandle_t input_buffer;
   RingbufHandle_t output_buffer;
-  esp_audio_enc_handle_t
-      encoder; // 编码器句柄会在创建编码器对象的时候被赋到这里
+  // 编码器句柄会在创建编码器对象的时候被赋到这里
+  esp_audio_enc_handle_t encoder;
 };
 
 /**
@@ -58,8 +58,8 @@ void audio_encode_task(void *args) {
   esp_audio_enc_get_frame_size(audio_encode->encoder, &in_size, &out_size);
 
   // 申请输入输出内存空间
-  uint8_t *in_data = (uint8_t *)malloc(
-      in_size); // 也就是说，*in_data为起点in_size个字节长度的堆被malloc标记了，其它函数不许使用
+  uint8_t *in_data = (uint8_t *)malloc(in_size);
+  // 也就是说，*in_data为起点in_size个字节长度的堆被malloc标记了，其它函数不许使用
   uint8_t *out_data = (uint8_t *)malloc(out_size);
 
   // 创建输入以及输出数据帧结构体
@@ -82,8 +82,6 @@ void audio_encode_task(void *args) {
     // 编码器输出数据写入输出缓冲区
     xRingbufferSend(audio_encode->output_buffer, out_frame.buffer,
                     out_frame.encoded_bytes, portMAX_DELAY);
-
-    vTaskDelay(10);
   }
 }
 /**
@@ -105,7 +103,7 @@ audio_encode_t *audio_encode_init(void) {
       .sample_rate = ESP_AUDIO_SAMPLE_RATE_16K,
       .channel = ESP_AUDIO_MONO,
       .bits_per_sample = ESP_AUDIO_BIT16,
-      .bitrate = 256000,
+      .bitrate = 32000,
       .frame_duration = ESP_OPUS_ENC_FRAME_DURATION_60_MS,
       .application_mode = ESP_OPUS_ENC_APPLICATION_VOIP,
       .complexity = 5,

@@ -1,7 +1,7 @@
 {
     "version":            "1.2",
     "project_name":       "M_AI_doorbell_xiaozhi",
-    "project_version":    "1",
+    "project_version":    "22762a7-dirty",
     "project_path":       "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi",
     "idf_path":           "D:/Espressif/frameworks/esp-idf-v5.3.3",
     "build_dir":          "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/build",
@@ -1285,8 +1285,8 @@
             "managed_reqs": [],
             "managed_priv_reqs": [ "espressif__esp-sr", "espressif__esp_audio_codec", "espressif__esp_codec_dev", "espressif__led_strip", "espressif__qrcode" ],
             "file": "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/build/esp-idf/main/libmain.a",
-            "sources": [ "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/main/main.c", "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/main/com/com_debug.c", "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/main/bsp/bsp_es8311.c", "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/main/bsp/bsp_wifi.c", "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/main/bsp/bsp_ws2812.c", "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/main/audio/audio_sr.c", "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/main/audio/audio_decode.c", "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/main/audio/audio_encode.c" ],
-            "include_dirs": [ ".", "./bsp", "./audio", "./com", "./websocket" ]
+            "sources": [ "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/main/main.c", "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/main/com/com_debug.c", "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/main/bsp/bsp.c", "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/main/bsp/bsp_nvs.c", "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/main/bsp/bsp_mutable_buffer.c", "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/main/bsp/bsp_es8311.c", "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/main/bsp/bsp_wifi.c", "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/main/bsp/bsp_ws2812.c", "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/main/audio/audio_sr.c", "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/main/audio/audio_decode.c", "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/main/audio/audio_encode.c", "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/main/audio/audio_process.c", "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/main/protocol/pro_https.c" ],
+            "include_dirs": [ ".", "./bsp", "./audio", "./com", "./protocol" ]
         },
         "mbedtls": {
             "alias": "idf::mbedtls",
@@ -2911,7 +2911,7 @@
             "priv_reqs": [ "espressif__esp-sr", "espressif__esp_audio_codec", "espressif__esp_codec_dev", "espressif__led_strip", "espressif__qrcode" ],
             "managed_reqs": [],
             "managed_priv_reqs": [ "espressif__esp-sr", "espressif__esp_audio_codec", "espressif__esp_codec_dev", "espressif__led_strip", "espressif__qrcode" ],
-            "include_dirs": [ ".", "./bsp", "./audio", "./com", "./websocket" ]
+            "include_dirs": [ ".", "./bsp", "./audio", "./com", "./protocol" ]
         },
         "espressif__dl_fft": {
             "alias": "idf::espressif__dl_fft",

@@ -9,6 +9,7 @@
 #include "freertos/ringbuf.h"
 #include "portmacro.h"
 #include "protocomm_console.h"
+#include <assert.h>
 #include <stdint.h>
 #include <stdlib.h>
 
@@ -63,6 +64,9 @@ void audio_sr_fetch_task(void *args) {
   audio_sr_t *audio_sr = (audio_sr_t *)args;
   esp_afe_sr_iface_t *afe_handle = audio_sr->afe_handle;
   esp_afe_sr_data_t *afe_data = audio_sr->afe_data;
+  assert(audio_sr);
+  assert(afe_handle);
+  assert(afe_data);
 
   // 获取单通道输入数据大小
   int feed_chunksize = afe_handle->get_feed_chunksize(afe_data);
@@ -70,6 +74,7 @@ void audio_sr_fetch_task(void *args) {
   int feed_nch = afe_handle->get_feed_channel_num(afe_data);
   // 计算单次输入数据大小(最大值)
   size_t len = feed_chunksize * feed_nch * sizeof(int16_t);
+
   while (1) {
     // 获取语音活动检测结果
     afe_fetch_result_t *result = afe_handle->fetch(afe_data);
@@ -79,7 +84,7 @@ void audio_sr_fetch_task(void *args) {
     vad_state_t vad_state = result->vad_state;
     // 获取唤醒状态
     wakenet_state_t wakeup_state = result->wakeup_state;
-    
+
     // 判断当前是否为唤醒词
     if (wakeup_state == WAKENET_DETECTED) {
       // 修改唤醒状态
@@ -88,23 +93,23 @@ void audio_sr_fetch_task(void *args) {
         audio_sr->wakenet_callback(audio_sr->wakenet_args);
       }
     }
-    
+
     // 若当前为唤醒状态则处理语音数据
     if (audio_sr->is_waked) {
-      
+
       // 当语音识别状态变化时需要调用回调函数
       if (vad_state != audio_sr->last_vad_state) {
-        
+
         // 当前语音检测状态赋给上一次
         audio_sr->last_vad_state = vad_state;
-        
+
         if (audio_sr->vad_callback) {
           audio_sr->vad_callback(audio_sr->vad_args, vad_state);
         }
       }
       // 若当前有人说话则保留语音
       if (vad_state == VAD_SPEECH) {
-        MY_LOGE("开始循环抓取语音...");
+        // MY_LOGE("开始循环抓取语音...");
         xRingbufferSend(audio_sr->ringbuffer, processed_audio, len,
                         portMAX_DELAY);
       }
@@ -146,8 +151,8 @@ audio_sr_t *audio_sr_init(void) {
 }
 
 void audio_sr_start(audio_sr_t *audio_sr) {
-  xTaskCreate(audio_sr_feed_task, "feed task", 32 * 1024, audio_sr, 5, NULL);
   xTaskCreate(audio_sr_fetch_task, "fetch task", 32 * 1024, audio_sr, 6, NULL);
+  xTaskCreate(audio_sr_feed_task, "feed task", 32 * 1024, audio_sr, 5, NULL);
 }
 /**
  * @brief 设置输出环形缓冲区

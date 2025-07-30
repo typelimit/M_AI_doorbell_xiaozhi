@@ -19,8 +19,8 @@
 			"D:/Espressif/frameworks/esp-idf-v5.3.3/tools/cmake/build.cmake",
 			"D:/Espressif/frameworks/esp-idf-v5.3.3/tools/cmake/project.cmake",
 			"CMakeLists.txt",
-			"managed_components/espressif__esp-sr/CMakeLists.txt",
-			"D:/Espressif/frameworks/esp-idf-v5.3.3/components/app_update/CMakeLists.txt"
+			"D:/Espressif/frameworks/esp-idf-v5.3.3/components/app_update/CMakeLists.txt",
+			"managed_components/espressif__esp-sr/CMakeLists.txt"
 		],
 		"nodes" : 
 		[
@@ -85,7 +85,7 @@
 			{
 				"command" : 7,
 				"file" : 4,
-				"line" : 137,
+				"line" : 31,
 				"parent" : 10
 			},
 			{
@@ -94,7 +94,7 @@
 			{
 				"command" : 7,
 				"file" : 5,
-				"line" : 31,
+				"line" : 137,
 				"parent" : 12
 			}
 		]
@@ -103,23 +103,23 @@
 	[
 		{
 			"backtrace" : 9,
-			"id" : "bootloader::@6890427a1f51a3e7e1df"
-		},
-		{
-			"backtrace" : 9,
 			"id" : "app::@6890427a1f51a3e7e1df"
 		},
 		{
-			"backtrace" : 11,
-			"id" : "srmodels_bin::@6171f978ca351fd99ba3"
+			"backtrace" : 9,
+			"id" : "bootloader::@6890427a1f51a3e7e1df"
 		},
 		{
 			"backtrace" : 9,
 			"id" : "partition_table_bin::@8e7a60ee4fe55e1aaabf"
 		},
 		{
-			"backtrace" : 13,
+			"backtrace" : 11,
 			"id" : "blank_ota_data::@cc3b426666063acc9674"
+		},
+		{
+			"backtrace" : 13,
+			"id" : "srmodels_bin::@6171f978ca351fd99ba3"
 		}
 	],
 	"id" : "flash::@6890427a1f51a3e7e1df",

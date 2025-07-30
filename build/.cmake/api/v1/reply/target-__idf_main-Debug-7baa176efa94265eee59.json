@@ -565,139 +565,139 @@
 					"path" : "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/managed_components/espressif__esp_audio_codec/include/simple_dec"
 				},
 				{
-					"backtrace" : 11,
+					"backtrace" : 10,
 					"path" : "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/managed_components/espressif__esp_codec_dev/include"
 				},
 				{
-					"backtrace" : 11,
+					"backtrace" : 10,
 					"path" : "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/managed_components/espressif__esp_codec_dev/interface"
 				},
 				{
-					"backtrace" : 11,
+					"backtrace" : 10,
 					"path" : "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/managed_components/espressif__esp_codec_dev/device/include"
 				},
 				{
-					"backtrace" : 11,
+					"backtrace" : 10,
 					"path" : "D:/Espressif/frameworks/esp-idf-v5.3.3/components/driver/deprecated"
 				},
 				{
-					"backtrace" : 11,
+					"backtrace" : 10,
 					"path" : "D:/Espressif/frameworks/esp-idf-v5.3.3/components/driver/i2c/include"
 				},
 				{
-					"backtrace" : 11,
+					"backtrace" : 10,
 					"path" : "D:/Espressif/frameworks/esp-idf-v5.3.3/components/driver/touch_sensor/include"
 				},
 				{
-					"backtrace" : 11,
+					"backtrace" : 10,
 					"path" : "D:/Espressif/frameworks/esp-idf-v5.3.3/components/driver/twai/include"
 				},
 				{
-					"backtrace" : 11,
+					"backtrace" : 10,
 					"path" : "D:/Espressif/frameworks/esp-idf-v5.3.3/components/driver/touch_sensor/esp32s3/include"
 				},
 				{
-					"backtrace" : 11,
+					"backtrace" : 10,
 					"path" : "D:/Espressif/frameworks/esp-idf-v5.3.3/components/esp_pm/include"
 				},
 				{
-					"backtrace" : 11,
+					"backtrace" : 10,
 					"path" : "D:/Espressif/frameworks/esp-idf-v5.3.3/components/esp_ringbuf/include"
 				},
 				{
-					"backtrace" : 11,
+					"backtrace" : 10,
 					"path" : "D:/Espressif/frameworks/esp-idf-v5.3.3/components/esp_driver_gpio/include"
 				},
 				{
-					"backtrace" : 11,
+					"backtrace" : 10,
 					"path" : "D:/Espressif/frameworks/esp-idf-v5.3.3/components/esp_driver_pcnt/include"
 				},
 				{
-					"backtrace" : 11,
+					"backtrace" : 10,
 					"path" : "D:/Espressif/frameworks/esp-idf-v5.3.3/components/esp_driver_gptimer/include"
 				},
 				{
-					"backtrace" : 11,
+					"backtrace" : 10,
 					"path" : "D:/Espressif/frameworks/esp-idf-v5.3.3/components/esp_driver_spi/include"
 				},
 				{
-					"backtrace" : 11,
+					"backtrace" : 10,
 					"path" : "D:/Espressif/frameworks/esp-idf-v5.3.3/components/esp_driver_mcpwm/include"
 				},
 				{
-					"backtrace" : 11,
+					"backtrace" : 10,
 					"path" : "D:/Espressif/frameworks/esp-idf-v5.3.3/components/esp_driver_ana_cmpr/include"
 				},
 				{
-					"backtrace" : 11,
+					"backtrace" : 10,
 					"path" : "D:/Espressif/frameworks/esp-idf-v5.3.3/components/esp_driver_i2s/include"
 				},
 				{
-					"backtrace" : 11,
+					"backtrace" : 10,
 					"path" : "D:/Espressif/frameworks/esp-idf-v5.3.3/components/esp_driver_sdmmc/include"
 				},
 				{
-					"backtrace" : 11,
+					"backtrace" : 10,
 					"path" : "D:/Espressif/frameworks/esp-idf-v5.3.3/components/sdmmc/include"
 				},
 				{
-					"backtrace" : 11,
+					"backtrace" : 10,
 					"path" : "D:/Espressif/frameworks/esp-idf-v5.3.3/components/esp_driver_sdspi/include"
 				},
 				{
-					"backtrace" : 11,
+					"backtrace" : 10,
 					"path" : "D:/Espressif/frameworks/esp-idf-v5.3.3/components/esp_driver_sdio/include"
 				},
 				{
-					"backtrace" : 11,
+					"backtrace" : 10,
 					"path" : "D:/Espressif/frameworks/esp-idf-v5.3.3/components/esp_driver_dac/include"
 				},
 				{
-					"backtrace" : 11,
+					"backtrace" : 10,
 					"path" : "D:/Espressif/frameworks/esp-idf-v5.3.3/components/esp_driver_rmt/include"
 				},
 				{
-					"backtrace" : 11,
+					"backtrace" : 10,
 					"path" : "D:/Espressif/frameworks/esp-idf-v5.3.3/components/esp_driver_tsens/include"
 				},
 				{
-					"backtrace" : 11,
+					"backtrace" : 10,
 					"path" : "D:/Espressif/frameworks/esp-idf-v5.3.3/components/esp_driver_sdm/include"
 				},
 				{
-					"backtrace" : 11,
+					"backtrace" : 10,
 					"path" : "D:/Espressif/frameworks/esp-idf-v5.3.3/components/esp_driver_i2c/include"
 				},
 				{
-					"backtrace" : 11,
+					"backtrace" : 10,
 					"path" : "D:/Espressif/frameworks/esp-idf-v5.3.3/components/esp_driver_uart/include"
 				},
 				{
-					"backtrace" : 11,
+					"backtrace" : 10,
 					"path" : "D:/Espressif/frameworks/esp-idf-v5.3.3/components/vfs/include"
 				},
 				{
-					"backtrace" : 11,
+					"backtrace" : 10,
 					"path" : "D:/Espressif/frameworks/esp-idf-v5.3.3/components/esp_driver_ledc/include"
 				},
 				{
-					"backtrace" : 11,
+					"backtrace" : 10,
 					"path" : "D:/Espressif/frameworks/esp-idf-v5.3.3/components/esp_driver_parlio/include"
 				},
 				{
-					"backtrace" : 11,
+					"backtrace" : 10,
 					"path" : "D:/Espressif/frameworks/esp-idf-v5.3.3/components/esp_driver_usb_serial_jtag/include"
 				},
 				{
-					"backtrace" : 10,
+					"backtrace" : 12,
 					"path" : "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/managed_components/espressif__led_strip/include"
 				},
 				{
-					"backtrace" : 10,
+					"backtrace" : 12,
 					"path" : "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/managed_components/espressif__led_strip/interface"
 				},
 				{
-					"backtrace" : 12,
+					"backtrace" : 11,
 					"path" : "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/managed_components/espressif__qrcode/include"
 				},
 				{
@@ -1236,26 +1236,6 @@
 		},
 		{
 			"backtrace" : 5,
-			"id" : "__idf_app_trace::@dd7eb3aa23293586d3b8"
-		},
-		{
-			"backtrace" : 5,
-			"id" : "__idf_esp_hid::@15df40e16a5d8775dd9b"
-		},
-		{
-			"backtrace" : 5,
-			"id" : "__idf_esp_https_server::@a47490a9e49b7eabdb18"
-		},
-		{
-			"backtrace" : 5,
-			"id" : "__idf_protobuf-c::@b14513c4bd859268ec22"
-		},
-		{
-			"backtrace" : 5,
-			"id" : "__idf_esp_lcd::@d5a84597e1633c9ab0d3"
-		},
-		{
-			"backtrace" : 5,
 			"id" : "__idf_bt::@0a9ab9982b985d43ed2a"
 		},
 		{
@@ -1276,23 +1256,15 @@
 		},
 		{
 			"backtrace" : 5,
-			"id" : "__idf_protocomm::@d76d01c8dec06205e1fc"
+			"id" : "__idf_esp_hid::@15df40e16a5d8775dd9b"
 		},
 		{
 			"backtrace" : 5,
-			"id" : "__idf_espcoredump::@718b9a7d55ab42cfc0a3"
+			"id" : "__idf_esp_https_server::@a47490a9e49b7eabdb18"
 		},
 		{
 			"backtrace" : 5,
-			"id" : "__idf_esp_local_ctrl::@d6aad58d2946e56208ef"
-		},
-		{
-			"backtrace" : 5,
-			"id" : "__idf_wear_levelling::@cb21b0d7c0815cff11c6"
-		},
-		{
-			"backtrace" : 5,
-			"id" : "__idf_fatfs::@75ac1d9b25dacc8cc9e7"
+			"id" : "__idf_esp_lcd::@d5a84597e1633c9ab0d3"
 		},
 		{
 			"backtrace" : 8,
@@ -1311,12 +1283,12 @@
 			"id" : "__idf_perfmon::@aac0f647c32bb8f54a67"
 		},
 		{
-			"backtrace" : 5,
-			"id" : "__idf_touch_element::@01c672d9a2e23f1d367f"
-		},
-		{
 			"backtrace" : 8,
 			"id" : "__idf_spiffs::@df881b71474064c86689"
+		},
+		{
+			"backtrace" : 5,
+			"id" : "__idf_touch_element::@01c672d9a2e23f1d367f"
 		},
 		{
 			"backtrace" : 5,
@@ -1344,15 +1316,43 @@
 		},
 		{
 			"backtrace" : 10,
-			"id" : "__idf_espressif__led_strip::@d894ad21b59de47c274a"
-		},
-		{
-			"backtrace" : 11,
 			"id" : "__idf_espressif__esp_codec_dev::@baec3fd64d4ef7018c55"
 		},
 		{
-			"backtrace" : 12,
+			"backtrace" : 11,
 			"id" : "__idf_espressif__qrcode::@a73cb04e6af3b825f532"
+		},
+		{
+			"backtrace" : 12,
+			"id" : "__idf_espressif__led_strip::@d894ad21b59de47c274a"
+		},
+		{
+			"backtrace" : 5,
+			"id" : "__idf_protocomm::@d76d01c8dec06205e1fc"
+		},
+		{
+			"backtrace" : 5,
+			"id" : "__idf_protobuf-c::@b14513c4bd859268ec22"
+		},
+		{
+			"backtrace" : 5,
+			"id" : "__idf_esp_local_ctrl::@d6aad58d2946e56208ef"
+		},
+		{
+			"backtrace" : 5,
+			"id" : "__idf_espcoredump::@718b9a7d55ab42cfc0a3"
+		},
+		{
+			"backtrace" : 5,
+			"id" : "__idf_wear_levelling::@cb21b0d7c0815cff11c6"
+		},
+		{
+			"backtrace" : 5,
+			"id" : "__idf_fatfs::@75ac1d9b25dacc8cc9e7"
+		},
+		{
+			"backtrace" : 5,
+			"id" : "__idf_app_trace::@dd7eb3aa23293586d3b8"
 		}
 	],
 	"id" : "__idf_main::@7368607ed66887415643",

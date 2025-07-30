@@ -57,24 +57,6 @@
 			"id" : "__idf_xtensa::@1daaaad7abe597e030f9"
 		},
 		{
-			"id" : "__idf_main::@7368607ed66887415643"
-		},
-		{
-			"id" : "__idf_app_trace::@dd7eb3aa23293586d3b8"
-		},
-		{
-			"id" : "__idf_esp_hid::@15df40e16a5d8775dd9b"
-		},
-		{
-			"id" : "__idf_esp_https_server::@a47490a9e49b7eabdb18"
-		},
-		{
-			"id" : "__idf_protobuf-c::@b14513c4bd859268ec22"
-		},
-		{
-			"id" : "__idf_esp_lcd::@d5a84597e1633c9ab0d3"
-		},
-		{
 			"id" : "__idf_bt::@0a9ab9982b985d43ed2a"
 		},
 		{
@@ -90,19 +72,13 @@
 			"id" : "__idf_esp_driver_cam::@d005630ea6316acc7c7d"
 		},
 		{
-			"id" : "__idf_protocomm::@d76d01c8dec06205e1fc"
+			"id" : "__idf_esp_hid::@15df40e16a5d8775dd9b"
 		},
 		{
-			"id" : "__idf_espcoredump::@718b9a7d55ab42cfc0a3"
+			"id" : "__idf_esp_https_server::@a47490a9e49b7eabdb18"
 		},
 		{
-			"id" : "__idf_esp_local_ctrl::@d6aad58d2946e56208ef"
-		},
-		{
-			"id" : "__idf_wear_levelling::@cb21b0d7c0815cff11c6"
-		},
-		{
-			"id" : "__idf_fatfs::@75ac1d9b25dacc8cc9e7"
+			"id" : "__idf_esp_lcd::@d5a84597e1633c9ab0d3"
 		},
 		{
 			"id" : "__idf_json::@c78a8bdc820334f01148"
@@ -117,10 +93,10 @@
 			"id" : "__idf_perfmon::@aac0f647c32bb8f54a67"
 		},
 		{
-			"id" : "__idf_touch_element::@01c672d9a2e23f1d367f"
+			"id" : "__idf_spiffs::@df881b71474064c86689"
 		},
 		{
-			"id" : "__idf_spiffs::@df881b71474064c86689"
+			"id" : "__idf_touch_element::@01c672d9a2e23f1d367f"
 		},
 		{
 			"id" : "__idf_usb::@4a2418067d0bb57af462"
@@ -141,13 +117,37 @@
 			"id" : "__idf_espressif__esp_audio_codec::@6518f7e5fd26c8a120be"
 		},
 		{
-			"id" : "__idf_espressif__led_strip::@d894ad21b59de47c274a"
-		},
-		{
 			"id" : "__idf_espressif__esp_codec_dev::@baec3fd64d4ef7018c55"
 		},
 		{
 			"id" : "__idf_espressif__qrcode::@a73cb04e6af3b825f532"
+		},
+		{
+			"id" : "__idf_espressif__led_strip::@d894ad21b59de47c274a"
+		},
+		{
+			"id" : "__idf_protocomm::@d76d01c8dec06205e1fc"
+		},
+		{
+			"id" : "__idf_protobuf-c::@b14513c4bd859268ec22"
+		},
+		{
+			"id" : "__idf_esp_local_ctrl::@d6aad58d2946e56208ef"
+		},
+		{
+			"id" : "__idf_espcoredump::@718b9a7d55ab42cfc0a3"
+		},
+		{
+			"id" : "__idf_wear_levelling::@cb21b0d7c0815cff11c6"
+		},
+		{
+			"id" : "__idf_fatfs::@75ac1d9b25dacc8cc9e7"
+		},
+		{
+			"id" : "__idf_main::@7368607ed66887415643"
+		},
+		{
+			"id" : "__idf_app_trace::@dd7eb3aa23293586d3b8"
 		}
 	],
 	"id" : "__ldgen_output_sections.ld::@874df54e61e20112dfd4",

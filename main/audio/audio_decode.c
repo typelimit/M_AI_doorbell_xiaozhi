@@ -99,7 +99,7 @@ audio_decode_t *audio_decode_init(void) {
   // 启动解码器
   esp_audio_dec_open(
       &dec_cfg,
-      &audio_decode->decoder); // 这里用的audio_decode->decoder应该是二级指针
+      &audio_decode->decoder); // 这里用的audio_decode->decoder应该是二级指针???
 
   // 返回结构体
   return audio_decode;
@@ -112,6 +112,7 @@ audio_decode_t *audio_decode_init(void) {
  * @return audio_decode_t*
  */
 void audio_decode_start(audio_decode_t *audio_decode) {
+
   audio_decode->is_running = 1; // 执行开始编码给它置1
   xTaskCreateWithCaps(audio_decode_task, "decode_task", 32 * 1024, audio_decode,
                       5, NULL, MALLOC_CAP_SPIRAM);

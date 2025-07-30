@@ -2240,36 +2240,12 @@
 	"dependencies" : 
 	[
 		{
-			"backtrace" : 9,
-			"id" : "__idf_xtensa::@1daaaad7abe597e030f9"
-		},
-		{
 			"backtrace" : 208,
 			"id" : "_project_elf_src::@6890427a1f51a3e7e1df"
 		},
 		{
-			"backtrace" : 101,
-			"id" : "__idf_main::@7368607ed66887415643"
-		},
-		{
-			"backtrace" : 41,
-			"id" : "__idf_app_trace::@dd7eb3aa23293586d3b8"
-		},
-		{
-			"backtrace" : 72,
-			"id" : "__idf_esp_hid::@15df40e16a5d8775dd9b"
-		},
-		{
-			"backtrace" : 77,
-			"id" : "__idf_esp_https_server::@a47490a9e49b7eabdb18"
-		},
-		{
-			"backtrace" : 80,
-			"id" : "__idf_protobuf-c::@b14513c4bd859268ec22"
-		},
-		{
-			"backtrace" : 79,
-			"id" : "__idf_esp_lcd::@d5a84597e1633c9ab0d3"
+			"backtrace" : 9,
+			"id" : "__idf_xtensa::@1daaaad7abe597e030f9"
 		},
 		{
 			"backtrace" : 13,
@@ -2292,24 +2268,16 @@
 			"id" : "__idf_esp_driver_cam::@d005630ea6316acc7c7d"
 		},
 		{
-			"backtrace" : 81,
-			"id" : "__idf_protocomm::@d76d01c8dec06205e1fc"
+			"backtrace" : 72,
+			"id" : "__idf_esp_hid::@15df40e16a5d8775dd9b"
 		},
 		{
-			"backtrace" : 83,
-			"id" : "__idf_espcoredump::@718b9a7d55ab42cfc0a3"
+			"backtrace" : 77,
+			"id" : "__idf_esp_https_server::@a47490a9e49b7eabdb18"
 		},
 		{
-			"backtrace" : 82,
-			"id" : "__idf_esp_local_ctrl::@d6aad58d2946e56208ef"
-		},
-		{
-			"backtrace" : 84,
-			"id" : "__idf_wear_levelling::@cb21b0d7c0815cff11c6"
-		},
-		{
-			"backtrace" : 85,
-			"id" : "__idf_fatfs::@75ac1d9b25dacc8cc9e7"
+			"backtrace" : 79,
+			"id" : "__idf_esp_lcd::@d5a84597e1633c9ab0d3"
 		},
 		{
 			"backtrace" : 86,
@@ -2328,12 +2296,12 @@
 			"id" : "__idf_perfmon::@aac0f647c32bb8f54a67"
 		},
 		{
-			"backtrace" : 91,
-			"id" : "__idf_touch_element::@01c672d9a2e23f1d367f"
-		},
-		{
 			"backtrace" : 90,
 			"id" : "__idf_spiffs::@df881b71474064c86689"
+		},
+		{
+			"backtrace" : 91,
+			"id" : "__idf_touch_element::@01c672d9a2e23f1d367f"
 		},
 		{
 			"backtrace" : 92,
@@ -2360,10 +2328,6 @@
 			"id" : "__idf_espressif__esp_audio_codec::@6518f7e5fd26c8a120be"
 		},
 		{
-			"backtrace" : 99,
-			"id" : "__idf_espressif__led_strip::@d894ad21b59de47c274a"
-		},
-		{
 			"backtrace" : 98,
 			"id" : "__idf_espressif__esp_codec_dev::@baec3fd64d4ef7018c55"
 		},
@@ -2372,8 +2336,44 @@
 			"id" : "__idf_espressif__qrcode::@a73cb04e6af3b825f532"
 		},
 		{
+			"backtrace" : 99,
+			"id" : "__idf_espressif__led_strip::@d894ad21b59de47c274a"
+		},
+		{
+			"backtrace" : 81,
+			"id" : "__idf_protocomm::@d76d01c8dec06205e1fc"
+		},
+		{
+			"backtrace" : 80,
+			"id" : "__idf_protobuf-c::@b14513c4bd859268ec22"
+		},
+		{
+			"backtrace" : 82,
+			"id" : "__idf_esp_local_ctrl::@d6aad58d2946e56208ef"
+		},
+		{
+			"backtrace" : 83,
+			"id" : "__idf_espcoredump::@718b9a7d55ab42cfc0a3"
+		},
+		{
+			"backtrace" : 84,
+			"id" : "__idf_wear_levelling::@cb21b0d7c0815cff11c6"
+		},
+		{
+			"backtrace" : 85,
+			"id" : "__idf_fatfs::@75ac1d9b25dacc8cc9e7"
+		},
+		{
+			"backtrace" : 101,
+			"id" : "__idf_main::@7368607ed66887415643"
+		},
+		{
 			"backtrace" : 213,
 			"id" : "__ldgen_output_sections.ld::@874df54e61e20112dfd4"
+		},
+		{
+			"backtrace" : 41,
+			"id" : "__idf_app_trace::@dd7eb3aa23293586d3b8"
 		}
 	],
 	"id" : "M_AI_doorbell_xiaozhi.elf::@6890427a1f51a3e7e1df",

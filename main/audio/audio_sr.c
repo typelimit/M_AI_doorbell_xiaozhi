@@ -27,6 +27,8 @@ struct audio_sr {
 
   RingbufHandle_t ringbuffer;
 };
+
+
 // 喂数据任务
 void audio_sr_feed_task(void *args) {
 
@@ -56,6 +58,8 @@ void audio_sr_feed_task(void *args) {
     vTaskDelay(10);
   }
 }
+
+
 // 取数据任务
 void audio_sr_fetch_task(void *args) {
 
@@ -118,6 +122,7 @@ void audio_sr_fetch_task(void *args) {
   }
 }
 
+
 audio_sr_t *audio_sr_init(void) {
   // 1.申请资源
   audio_sr_t *audio_sr = malloc(sizeof(audio_sr_t));
@@ -154,6 +159,8 @@ void audio_sr_start(audio_sr_t *audio_sr) {
   xTaskCreate(audio_sr_fetch_task, "fetch task", 32 * 1024, audio_sr, 6, NULL);
   xTaskCreate(audio_sr_feed_task, "feed task", 32 * 1024, audio_sr, 5, NULL);
 }
+
+
 /**
  * @brief 设置输出环形缓冲区
  *

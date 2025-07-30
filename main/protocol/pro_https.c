@@ -147,11 +147,18 @@ char *pro_https_get_body_str(void) {
  */
 void pro_https_send_reg(void) {
 
-  ESP_LOGI("MEM", "Free heap: %d, Largest block: %d", esp_get_free_heap_size(),
-           heap_caps_get_largest_free_block(MALLOC_CAP_DEFAULT));
+  // ESP_LOGI("MEM", "Free heap: %d, Largest block: %d",
+  // esp_get_free_heap_size(),
+  //          heap_caps_get_largest_free_block(MALLOC_CAP_DEFAULT));
 
   // 创建可变缓存用于接收响应数据
+  // ESP_LOGI("MEM", "before mutable_buffer: Free %d, MaxBlock %d",
+  //          esp_get_free_heap_size(),
+  //          heap_caps_get_largest_free_block(MALLOC_CAP_DEFAULT));
   mutable_buffer_t *mutable_buffer = bsp_mutable_buffer_init();
+  // ESP_LOGI("MEM", "after mutable_buffer: Free %d, MaxBlock %d",
+  //          esp_get_free_heap_size(),
+  //          heap_caps_get_largest_free_block(MALLOC_CAP_DEFAULT));
 
   // 1.http请求参数
   esp_http_client_config_t config = {
@@ -176,7 +183,11 @@ void pro_https_send_reg(void) {
 
   // 4.设置body信息
   char *json_str = pro_https_get_body_str();
-  MY_LOGE("JSON_STR=%s", json_str);
+  // ESP_LOGI("MEM", "after cJSON: Free %d, MaxBlock %d, JSON len %d",
+  //          esp_get_free_heap_size(),
+  //          heap_caps_get_largest_free_block(MALLOC_CAP_DEFAULT),
+  //          strlen(json_str));
+
   esp_http_client_set_post_field(client, json_str, strlen(json_str));
 
   // 5.发送请求

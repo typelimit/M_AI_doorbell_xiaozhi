@@ -2289,7 +2289,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "M_AI_doorbell_xiaozhi.elf::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-M_AI_doorbell_xiaozhi.elf-Debug-04d7836e337231b959dd.json",
+					"jsonFile" : "target-M_AI_doorbell_xiaozhi.elf-Debug-fe21d897ec0daa132bbb.json",
 					"name" : "M_AI_doorbell_xiaozhi.elf",
 					"projectIndex" : 0
 				},
@@ -2373,7 +2373,7 @@
 				{
 					"directoryIndex" : 16,
 					"id" : "__idf_esp_app_format::@08c2bdce7fd85cdbea06",
-					"jsonFile" : "target-__idf_esp_app_format-Debug-639cc75149edb318a819.json",
+					"jsonFile" : "target-__idf_esp_app_format-Debug-aea3c9aca722de774619.json",
 					"name" : "__idf_esp_app_format",
 					"projectIndex" : 1
 				},
@@ -2583,7 +2583,7 @@
 				{
 					"directoryIndex" : 99,
 					"id" : "__idf_esp_local_ctrl::@d6aad58d2946e56208ef",
-					"jsonFile" : "target-__idf_esp_local_ctrl-Debug-058a954298ecdeb5844e.json",
+					"jsonFile" : "target-__idf_esp_local_ctrl-Debug-0a2739c1c0aaa30c6326.json",
 					"name" : "__idf_esp_local_ctrl",
 					"projectIndex" : 1
 				},
@@ -2786,7 +2786,7 @@
 				{
 					"directoryIndex" : 122,
 					"id" : "__idf_main::@7368607ed66887415643",
-					"jsonFile" : "target-__idf_main-Debug-5eb86bccc7ffbf0438d1.json",
+					"jsonFile" : "target-__idf_main-Debug-7baa176efa94265eee59.json",
 					"name" : "__idf_main",
 					"projectIndex" : 1
 				},
@@ -2842,7 +2842,7 @@
 				{
 					"directoryIndex" : 98,
 					"id" : "__idf_protocomm::@d76d01c8dec06205e1fc",
-					"jsonFile" : "target-__idf_protocomm-Debug-ef77804604c20d01ba27.json",
+					"jsonFile" : "target-__idf_protocomm-Debug-667dc2eaa7d8f565826a.json",
 					"name" : "__idf_protocomm",
 					"projectIndex" : 1
 				},
@@ -2926,7 +2926,7 @@
 				{
 					"directoryIndex" : 114,
 					"id" : "__idf_wifi_provisioning::@9d7e7ffe1b15746c1098",
-					"jsonFile" : "target-__idf_wifi_provisioning-Debug-8b6c87f300d9f0f513ca.json",
+					"jsonFile" : "target-__idf_wifi_provisioning-Debug-ae7e99dc3c08b29bea42.json",
 					"name" : "__idf_wifi_provisioning",
 					"projectIndex" : 1
 				},
@@ -2947,7 +2947,7 @@
 				{
 					"directoryIndex" : 24,
 					"id" : "__ldgen_output_sections.ld::@874df54e61e20112dfd4",
-					"jsonFile" : "target-__ldgen_output_sections.ld-Debug-ec924a9159900e91c468.json",
+					"jsonFile" : "target-__ldgen_output_sections.ld-Debug-4a3add20c985221962a3.json",
 					"name" : "__ldgen_output_sections.ld",
 					"projectIndex" : 1
 				},
@@ -3143,7 +3143,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "flash::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-flash-Debug-b8ab5fd43f41127be8f2.json",
+					"jsonFile" : "target-flash-Debug-e98eb1fd5973776549b2.json",
 					"name" : "flash",
 					"projectIndex" : 0
 				},

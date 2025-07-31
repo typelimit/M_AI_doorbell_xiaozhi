@@ -1232,12 +1232,6 @@
 				"parent" : 207
 			},
 			{
-				"command" : 6,
-				"file" : 0,
-				"line" : 764,
-				"parent" : 1
-			},
-			{
 				"command" : 9,
 				"file" : 16,
 				"line" : 90,
@@ -1245,25 +1239,31 @@
 			},
 			{
 				"file" : 31,
-				"parent" : 210
+				"parent" : 209
 			},
 			{
 				"command" : 8,
 				"file" : 31,
 				"line" : 58,
-				"parent" : 211
+				"parent" : 210
 			},
 			{
 				"command" : 7,
 				"file" : 30,
 				"line" : 148,
-				"parent" : 212
+				"parent" : 211
 			},
 			{
 				"command" : 6,
 				"file" : 29,
 				"line" : 78,
-				"parent" : 213
+				"parent" : 212
+			},
+			{
+				"command" : 6,
+				"file" : 0,
+				"line" : 764,
+				"parent" : 1
 			},
 			{
 				"command" : 5,
@@ -2250,52 +2250,40 @@
 	"dependencies" : 
 	[
 		{
-			"backtrace" : 209,
-			"id" : "_project_elf_src::@6890427a1f51a3e7e1df"
+			"backtrace" : 91,
+			"id" : "__idf_touch_element::@01c672d9a2e23f1d367f"
 		},
 		{
-			"backtrace" : 101,
-			"id" : "__idf_espressif__qrcode::@a73cb04e6af3b825f532"
+			"backtrace" : 92,
+			"id" : "__idf_usb::@4a2418067d0bb57af462"
 		},
 		{
-			"backtrace" : 100,
-			"id" : "__idf_espressif__led_strip::@d894ad21b59de47c274a"
+			"backtrace" : 94,
+			"id" : "__idf_espressif__esp-dsp::@173cdc30d8d2ec42511f"
 		},
 		{
-			"backtrace" : 102,
-			"id" : "__idf_main::@7368607ed66887415643"
+			"backtrace" : 93,
+			"id" : "__idf_wifi_provisioning::@9d7e7ffe1b15746c1098"
 		},
 		{
-			"backtrace" : 65,
-			"id" : "__idf_cmock::@38f9eb59693b7394f54c"
+			"backtrace" : 96,
+			"id" : "__idf_espressif__esp-sr::@6171f978ca351fd99ba3"
 		},
 		{
-			"backtrace" : 66,
-			"id" : "__idf_console::@4311ed8d271cc0ee1422"
+			"backtrace" : 95,
+			"id" : "__idf_espressif__dl_fft::@3ccf17c791098cd2e665"
 		},
 		{
-			"backtrace" : 70,
-			"id" : "__idf_esp_driver_cam::@d005630ea6316acc7c7d"
+			"backtrace" : 97,
+			"id" : "__idf_espressif__esp_audio_codec::@6518f7e5fd26c8a120be"
 		},
 		{
-			"backtrace" : 72,
-			"id" : "__idf_esp_hid::@15df40e16a5d8775dd9b"
-		},
-		{
-			"backtrace" : 77,
-			"id" : "__idf_esp_https_server::@a47490a9e49b7eabdb18"
+			"backtrace" : 98,
+			"id" : "__idf_espressif__esp_codec_dev::@baec3fd64d4ef7018c55"
 		},
 		{
 			"backtrace" : 79,
 			"id" : "__idf_esp_lcd::@d5a84597e1633c9ab0d3"
-		},
-		{
-			"backtrace" : 13,
-			"id" : "__idf_bt::@0a9ab9982b985d43ed2a"
-		},
-		{
-			"backtrace" : 64,
-			"id" : "__idf_unity::@fec746937506b5690992"
 		},
 		{
 			"backtrace" : 80,
@@ -2342,52 +2330,64 @@
 			"id" : "__idf_spiffs::@df881b71474064c86689"
 		},
 		{
-			"backtrace" : 91,
-			"id" : "__idf_touch_element::@01c672d9a2e23f1d367f"
-		},
-		{
-			"backtrace" : 92,
-			"id" : "__idf_usb::@4a2418067d0bb57af462"
-		},
-		{
-			"backtrace" : 93,
-			"id" : "__idf_wifi_provisioning::@9d7e7ffe1b15746c1098"
-		},
-		{
-			"backtrace" : 95,
-			"id" : "__idf_espressif__dl_fft::@3ccf17c791098cd2e665"
-		},
-		{
-			"backtrace" : 94,
-			"id" : "__idf_espressif__esp-dsp::@173cdc30d8d2ec42511f"
-		},
-		{
-			"backtrace" : 96,
-			"id" : "__idf_espressif__esp-sr::@6171f978ca351fd99ba3"
-		},
-		{
-			"backtrace" : 97,
-			"id" : "__idf_espressif__esp_audio_codec::@6518f7e5fd26c8a120be"
-		},
-		{
-			"backtrace" : 98,
-			"id" : "__idf_espressif__esp_codec_dev::@baec3fd64d4ef7018c55"
-		},
-		{
 			"backtrace" : 99,
 			"id" : "__idf_espressif__esp_websocket_client::@0ba9b7230891ef7e3890"
 		},
 		{
-			"backtrace" : 9,
-			"id" : "__idf_xtensa::@1daaaad7abe597e030f9"
+			"backtrace" : 100,
+			"id" : "__idf_espressif__led_strip::@d894ad21b59de47c274a"
 		},
 		{
-			"backtrace" : 214,
+			"backtrace" : 101,
+			"id" : "__idf_espressif__qrcode::@a73cb04e6af3b825f532"
+		},
+		{
+			"backtrace" : 102,
+			"id" : "__idf_main::@7368607ed66887415643"
+		},
+		{
+			"backtrace" : 213,
 			"id" : "__ldgen_output_sections.ld::@874df54e61e20112dfd4"
 		},
 		{
 			"backtrace" : 41,
 			"id" : "__idf_app_trace::@dd7eb3aa23293586d3b8"
+		},
+		{
+			"backtrace" : 13,
+			"id" : "__idf_bt::@0a9ab9982b985d43ed2a"
+		},
+		{
+			"backtrace" : 65,
+			"id" : "__idf_cmock::@38f9eb59693b7394f54c"
+		},
+		{
+			"backtrace" : 64,
+			"id" : "__idf_unity::@fec746937506b5690992"
+		},
+		{
+			"backtrace" : 66,
+			"id" : "__idf_console::@4311ed8d271cc0ee1422"
+		},
+		{
+			"backtrace" : 70,
+			"id" : "__idf_esp_driver_cam::@d005630ea6316acc7c7d"
+		},
+		{
+			"backtrace" : 72,
+			"id" : "__idf_esp_hid::@15df40e16a5d8775dd9b"
+		},
+		{
+			"backtrace" : 77,
+			"id" : "__idf_esp_https_server::@a47490a9e49b7eabdb18"
+		},
+		{
+			"backtrace" : 214,
+			"id" : "_project_elf_src::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 9,
+			"id" : "__idf_xtensa::@1daaaad7abe597e030f9"
 		}
 	],
 	"id" : "M_AI_doorbell_xiaozhi.elf::@6890427a1f51a3e7e1df",

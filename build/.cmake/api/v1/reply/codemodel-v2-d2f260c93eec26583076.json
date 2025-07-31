@@ -2307,7 +2307,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "M_AI_doorbell_xiaozhi.elf::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-M_AI_doorbell_xiaozhi.elf-Debug-302e2826176ab5ec923f.json",
+					"jsonFile" : "target-M_AI_doorbell_xiaozhi.elf-Debug-2ab87413c1a8d52d8ccb.json",
 					"name" : "M_AI_doorbell_xiaozhi.elf",
 					"projectIndex" : 0
 				},
@@ -2391,7 +2391,7 @@
 				{
 					"directoryIndex" : 16,
 					"id" : "__idf_esp_app_format::@08c2bdce7fd85cdbea06",
-					"jsonFile" : "target-__idf_esp_app_format-Debug-bd141b9f28e984458f30.json",
+					"jsonFile" : "target-__idf_esp_app_format-Debug-d978bdd05a81fa7dab06.json",
 					"name" : "__idf_esp_app_format",
 					"projectIndex" : 1
 				},
@@ -2601,7 +2601,7 @@
 				{
 					"directoryIndex" : 99,
 					"id" : "__idf_esp_local_ctrl::@d6aad58d2946e56208ef",
-					"jsonFile" : "target-__idf_esp_local_ctrl-Debug-43e5c4ad4d923cf6afca.json",
+					"jsonFile" : "target-__idf_esp_local_ctrl-Debug-7c86b8645a95911e7b48.json",
 					"name" : "__idf_esp_local_ctrl",
 					"projectIndex" : 1
 				},
@@ -2643,7 +2643,7 @@
 				{
 					"directoryIndex" : 95,
 					"id" : "__idf_esp_psram::@222fc793c25100a4848d",
-					"jsonFile" : "target-__idf_esp_psram-Debug-c4e70f6894a54851213b.json",
+					"jsonFile" : "target-__idf_esp_psram-Debug-451cddfeb4ffa4b4b605.json",
 					"name" : "__idf_esp_psram",
 					"projectIndex" : 1
 				},
@@ -2713,7 +2713,7 @@
 				{
 					"directoryIndex" : 117,
 					"id" : "__idf_espressif__esp-sr::@6171f978ca351fd99ba3",
-					"jsonFile" : "target-__idf_espressif__esp-sr-Debug-ce756b36508b89d0317e.json",
+					"jsonFile" : "target-__idf_espressif__esp-sr-Debug-76e4dd4f1cdfeb18d24e.json",
 					"name" : "__idf_espressif__esp-sr",
 					"projectIndex" : 1
 				},
@@ -2811,7 +2811,7 @@
 				{
 					"directoryIndex" : 123,
 					"id" : "__idf_main::@7368607ed66887415643",
-					"jsonFile" : "target-__idf_main-Debug-5f96c039e3929fd6c5aa.json",
+					"jsonFile" : "target-__idf_main-Debug-29d3fe598bac2ac1889e.json",
 					"name" : "__idf_main",
 					"projectIndex" : 1
 				},
@@ -2867,7 +2867,7 @@
 				{
 					"directoryIndex" : 98,
 					"id" : "__idf_protocomm::@d76d01c8dec06205e1fc",
-					"jsonFile" : "target-__idf_protocomm-Debug-00689be3180c16c4652c.json",
+					"jsonFile" : "target-__idf_protocomm-Debug-cfbaf4825b675b7bceab.json",
 					"name" : "__idf_protocomm",
 					"projectIndex" : 1
 				},
@@ -2951,7 +2951,7 @@
 				{
 					"directoryIndex" : 114,
 					"id" : "__idf_wifi_provisioning::@9d7e7ffe1b15746c1098",
-					"jsonFile" : "target-__idf_wifi_provisioning-Debug-0df5a3301e1bbaa1acb9.json",
+					"jsonFile" : "target-__idf_wifi_provisioning-Debug-111218ff3291364a72a3.json",
 					"name" : "__idf_wifi_provisioning",
 					"projectIndex" : 1
 				},
@@ -2972,7 +2972,7 @@
 				{
 					"directoryIndex" : 24,
 					"id" : "__ldgen_output_sections.ld::@874df54e61e20112dfd4",
-					"jsonFile" : "target-__ldgen_output_sections.ld-Debug-7862dd272814351397fd.json",
+					"jsonFile" : "target-__ldgen_output_sections.ld-Debug-44b7d83c1fbdadd969bc.json",
 					"name" : "__ldgen_output_sections.ld",
 					"projectIndex" : 1
 				},
@@ -3049,7 +3049,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "dfu::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-dfu-Debug-51cdd1b3fbcc258d3c91.json",
+					"jsonFile" : "target-dfu-Debug-b6057029d1e211792ddf.json",
 					"name" : "dfu",
 					"projectIndex" : 0
 				},
@@ -3168,7 +3168,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "flash::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-flash-Debug-4cf6cd41302b497725a2.json",
+					"jsonFile" : "target-flash-Debug-e514042ee78d201719fb.json",
 					"name" : "flash",
 					"projectIndex" : 0
 				},
@@ -3224,7 +3224,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "merge-bin::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-merge-bin-Debug-f8efde3075dcab2cd645.json",
+					"jsonFile" : "target-merge-bin-Debug-bdf83772b255821b0133.json",
 					"name" : "merge-bin",
 					"projectIndex" : 0
 				},

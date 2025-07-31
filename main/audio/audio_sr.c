@@ -14,6 +14,7 @@
 #include <stdlib.h>
 
 struct audio_sr {
+
   esp_afe_sr_iface_t *afe_handle;
   esp_afe_sr_data_t *afe_data;
   void (*wakenet_callback)(void *);
@@ -158,7 +159,8 @@ audio_sr_t *audio_sr_init(void) {
 }
 
 void audio_sr_start(audio_sr_t *audio_sr) {
-  xTaskCreate(audio_sr_fetch_task, "fetch task", 32 * 1024, audio_sr, 6, NULL);
+
+  xTaskCreate(audio_sr_fetch_task, "fetch task", 32 * 1024, audio_sr, 5, NULL);
   xTaskCreate(audio_sr_feed_task, "feed task", 32 * 1024, audio_sr, 5, NULL);
 }
 
@@ -169,6 +171,7 @@ void audio_sr_start(audio_sr_t *audio_sr) {
  * @param ringbuf
  */
 void audio_sr_set_ringbuffer(audio_sr_t *audio_sr, RingbufHandle_t ringbuf) {
+
   audio_sr->ringbuffer = ringbuf;
 }
 
@@ -181,6 +184,7 @@ void audio_sr_set_ringbuffer(audio_sr_t *audio_sr, RingbufHandle_t ringbuf) {
  */
 void audio_sr_set_wakenet_callback(audio_sr_t *audio_sr,
                                    void (*callback)(void *), void *args) {
+
   audio_sr->wakenet_callback = callback;
   audio_sr->wakenet_args = args;
 }
@@ -195,6 +199,7 @@ void audio_sr_set_wakenet_callback(audio_sr_t *audio_sr,
 void audio_sr_set_vad_callback(audio_sr_t *audio_sr,
                                void (*callback)(void *, vad_state_t),
                                void *args) {
+
   audio_sr->vad_callback = callback;
   audio_sr->vad_args = args;
 }

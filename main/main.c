@@ -124,9 +124,9 @@ void app_main(void) {
   pro_ws_start();
 
   // 发送消息测试
-  // pro_ws_send_hello();
-  // pro_ws_send_wakenet_word();
-  // pro_ws_send_listen();
+  pro_ws_send_hello();
+  pro_ws_send_wakenet_word();
+  pro_ws_send_listen();
 
   // 初始化音频处理模块
   audio_processor = audio_process_init();
@@ -141,7 +141,7 @@ void app_main(void) {
 
   size_t len = 0;
   while (1) {
-    
+
     // 从音频处理模块中读取数据
     void *data = audio_process_read_data(audio_processor, &len);
 

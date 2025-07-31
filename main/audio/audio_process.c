@@ -25,6 +25,11 @@ struct audio_process {
   RingbufHandle_t decode_output_buffer;
 };
 
+/**
+ * @brief 音频处理任务启动
+ *
+ * @param args
+ */
 void aduio_process_task(void *args) {
   MY_LOGE("处理模块————扬声器启动");
   audio_processor_t *audio_processor = (audio_processor_t *)args;
@@ -102,11 +107,19 @@ void audio_process_start(audio_processor_t *audio_processor) {
   audio_sr_start(audio_processor->audio_sr);
 }
 
+/**
+ * @brief 从编码器输出缓冲当中读数据
+ *
+ * @param audio_processor
+ * @param len
+ * @return void*
+ */
 void *audio_process_read_data(audio_processor_t *audio_processor, size_t *len) {
-  
+
   size_t read_len = 0;
-  void *read_data = xRingbufferReceive(audio_processor->encode_output_buffer,
-                                       len, portMAX_DELAY);
+  void *read_data = xRingbufferReceive(
+      audio_processor->encode_output_buffer, &read_len,
+      portMAX_DELAY); // 这里把read_len写成了len ===> 数据长度未能被成功修改
   // 赋值
   void *data = malloc(read_len);
   memcpy(data, read_data, read_len);

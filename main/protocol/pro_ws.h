@@ -31,6 +31,7 @@ void pro_ws_set_bin_callback(bin_callback cb);
 void pro_ws_init(void);
 
 void pro_ws_start(void);
+
 void pro_ws_close(void);
 
 void pro_ws_send_hello(void);

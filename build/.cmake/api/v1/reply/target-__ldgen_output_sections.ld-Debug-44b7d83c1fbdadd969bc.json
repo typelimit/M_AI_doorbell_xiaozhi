@@ -54,37 +54,31 @@
 	"dependencies" : 
 	[
 		{
-			"id" : "__idf_espressif__qrcode::@a73cb04e6af3b825f532"
+			"id" : "__idf_touch_element::@01c672d9a2e23f1d367f"
 		},
 		{
-			"id" : "__idf_espressif__led_strip::@d894ad21b59de47c274a"
+			"id" : "__idf_usb::@4a2418067d0bb57af462"
 		},
 		{
-			"id" : "__idf_main::@7368607ed66887415643"
+			"id" : "__idf_espressif__esp-dsp::@173cdc30d8d2ec42511f"
 		},
 		{
-			"id" : "__idf_cmock::@38f9eb59693b7394f54c"
+			"id" : "__idf_wifi_provisioning::@9d7e7ffe1b15746c1098"
 		},
 		{
-			"id" : "__idf_console::@4311ed8d271cc0ee1422"
+			"id" : "__idf_espressif__esp-sr::@6171f978ca351fd99ba3"
 		},
 		{
-			"id" : "__idf_esp_driver_cam::@d005630ea6316acc7c7d"
+			"id" : "__idf_espressif__dl_fft::@3ccf17c791098cd2e665"
 		},
 		{
-			"id" : "__idf_esp_hid::@15df40e16a5d8775dd9b"
+			"id" : "__idf_espressif__esp_audio_codec::@6518f7e5fd26c8a120be"
 		},
 		{
-			"id" : "__idf_esp_https_server::@a47490a9e49b7eabdb18"
+			"id" : "__idf_espressif__esp_codec_dev::@baec3fd64d4ef7018c55"
 		},
 		{
 			"id" : "__idf_esp_lcd::@d5a84597e1633c9ab0d3"
-		},
-		{
-			"id" : "__idf_bt::@0a9ab9982b985d43ed2a"
-		},
-		{
-			"id" : "__idf_unity::@fec746937506b5690992"
 		},
 		{
 			"id" : "__idf_protobuf-c::@b14513c4bd859268ec22"
@@ -120,37 +114,43 @@
 			"id" : "__idf_spiffs::@df881b71474064c86689"
 		},
 		{
-			"id" : "__idf_touch_element::@01c672d9a2e23f1d367f"
-		},
-		{
-			"id" : "__idf_usb::@4a2418067d0bb57af462"
-		},
-		{
-			"id" : "__idf_wifi_provisioning::@9d7e7ffe1b15746c1098"
-		},
-		{
-			"id" : "__idf_espressif__dl_fft::@3ccf17c791098cd2e665"
-		},
-		{
-			"id" : "__idf_espressif__esp-dsp::@173cdc30d8d2ec42511f"
-		},
-		{
-			"id" : "__idf_espressif__esp-sr::@6171f978ca351fd99ba3"
-		},
-		{
-			"id" : "__idf_espressif__esp_audio_codec::@6518f7e5fd26c8a120be"
-		},
-		{
-			"id" : "__idf_espressif__esp_codec_dev::@baec3fd64d4ef7018c55"
-		},
-		{
 			"id" : "__idf_espressif__esp_websocket_client::@0ba9b7230891ef7e3890"
 		},
 		{
-			"id" : "__idf_xtensa::@1daaaad7abe597e030f9"
+			"id" : "__idf_espressif__led_strip::@d894ad21b59de47c274a"
+		},
+		{
+			"id" : "__idf_espressif__qrcode::@a73cb04e6af3b825f532"
+		},
+		{
+			"id" : "__idf_main::@7368607ed66887415643"
 		},
 		{
 			"id" : "__idf_app_trace::@dd7eb3aa23293586d3b8"
+		},
+		{
+			"id" : "__idf_bt::@0a9ab9982b985d43ed2a"
+		},
+		{
+			"id" : "__idf_cmock::@38f9eb59693b7394f54c"
+		},
+		{
+			"id" : "__idf_unity::@fec746937506b5690992"
+		},
+		{
+			"id" : "__idf_console::@4311ed8d271cc0ee1422"
+		},
+		{
+			"id" : "__idf_esp_driver_cam::@d005630ea6316acc7c7d"
+		},
+		{
+			"id" : "__idf_esp_hid::@15df40e16a5d8775dd9b"
+		},
+		{
+			"id" : "__idf_esp_https_server::@a47490a9e49b7eabdb18"
+		},
+		{
+			"id" : "__idf_xtensa::@1daaaad7abe597e030f9"
 		}
 	],
 	"id" : "__ldgen_output_sections.ld::@874df54e61e20112dfd4",

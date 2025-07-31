@@ -593,14 +593,6 @@
 	[
 		{
 			"backtrace" : 5,
-			"id" : "__idf_console::@4311ed8d271cc0ee1422"
-		},
-		{
-			"backtrace" : 5,
-			"id" : "__idf_bt::@0a9ab9982b985d43ed2a"
-		},
-		{
-			"backtrace" : 5,
 			"id" : "__idf_protobuf-c::@b14513c4bd859268ec22"
 		},
 		{
@@ -610,6 +602,14 @@
 		{
 			"backtrace" : 7,
 			"id" : "__idf_json::@c78a8bdc820334f01148"
+		},
+		{
+			"backtrace" : 5,
+			"id" : "__idf_bt::@0a9ab9982b985d43ed2a"
+		},
+		{
+			"backtrace" : 5,
+			"id" : "__idf_console::@4311ed8d271cc0ee1422"
 		},
 		{
 			"backtrace" : 2,

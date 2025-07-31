@@ -605,7 +605,7 @@
 					"path" : "D:/Espressif/frameworks/esp-idf-v5.3.3/components/esp_netif/include"
 				},
 				{
-					"backtrace" : 8,
+					"backtrace" : 5,
 					"path" : "D:/Espressif/frameworks/esp-idf-v5.3.3/components/protobuf-c/protobuf-c"
 				},
 				{
@@ -637,15 +637,15 @@
 					"path" : "D:/Espressif/frameworks/esp-idf-v5.3.3/components/mbedtls/mbedtls/3rdparty/p256-m/p256-m"
 				},
 				{
-					"backtrace" : 5,
+					"backtrace" : 8,
 					"path" : "D:/Espressif/frameworks/esp-idf-v5.3.3/components/console"
 				},
 				{
-					"backtrace" : 5,
+					"backtrace" : 8,
 					"path" : "D:/Espressif/frameworks/esp-idf-v5.3.3/components/vfs/include"
 				},
 				{
-					"backtrace" : 5,
+					"backtrace" : 8,
 					"path" : "D:/Espressif/frameworks/esp-idf-v5.3.3/components/esp_vfs_console/include"
 				},
 				{
@@ -790,7 +790,7 @@
 	[
 		{
 			"backtrace" : 5,
-			"id" : "__idf_console::@4311ed8d271cc0ee1422"
+			"id" : "__idf_protobuf-c::@b14513c4bd859268ec22"
 		},
 		{
 			"backtrace" : 7,
@@ -798,7 +798,7 @@
 		},
 		{
 			"backtrace" : 8,
-			"id" : "__idf_protobuf-c::@b14513c4bd859268ec22"
+			"id" : "__idf_console::@4311ed8d271cc0ee1422"
 		},
 		{
 			"backtrace" : 2,

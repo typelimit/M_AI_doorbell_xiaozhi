@@ -3,7 +3,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "esp-idf/espressif__esp-sr/libespressif__esp-sr.a"
+			"path" : "esp-idf/esp_psram/libesp_psram.a"
 		}
 	],
 	"backtrace" : 2,
@@ -13,20 +13,26 @@
 		[
 			"add_library",
 			"idf_component_register",
-			"set_property",
-			"__component_set_dependencies",
-			"__component_set_all_dependencies",
+			"add_dependencies",
+			"preprocess_linker_file",
+			"include",
 			"add_compile_options",
 			"add_c_compile_options",
 			"add_compile_definitions",
 			"include_directories",
 			"target_include_directories",
-			"__component_add_include_dirs"
+			"__component_add_include_dirs",
+			"set_property",
+			"__component_set_dependencies",
+			"__component_set_all_dependencies"
 		],
 		"files" : 
 		[
 			"D:/Espressif/frameworks/esp-idf-v5.3.3/tools/cmake/component.cmake",
-			"managed_components/espressif__esp-sr/CMakeLists.txt",
+			"D:/Espressif/frameworks/esp-idf-v5.3.3/components/esp_psram/CMakeLists.txt",
+			"D:/Espressif/frameworks/esp-idf-v5.3.3/components/esp_system/ld/ld.cmake",
+			"D:/Espressif/frameworks/esp-idf-v5.3.3/components/esp_system/CMakeLists.txt",
+			"D:/Espressif/frameworks/esp-idf-v5.3.3/components/mbedtls/CMakeLists.txt",
 			"D:/Espressif/frameworks/esp-idf-v5.3.3/tools/cmake/utilities.cmake"
 		],
 		"nodes" : 
@@ -37,7 +43,7 @@
 			{
 				"command" : 1,
 				"file" : 1,
-				"line" : 24,
+				"line" : 49,
 				"parent" : 0
 			},
 			{
@@ -47,40 +53,50 @@
 				"parent" : 1
 			},
 			{
+				"file" : 3
+			},
+			{
 				"command" : 4,
-				"file" : 0,
-				"line" : 517,
-				"parent" : 1
-			},
-			{
-				"command" : 3,
-				"file" : 0,
-				"line" : 358,
+				"file" : 3,
+				"line" : 90,
 				"parent" : 3
 			},
 			{
-				"command" : 2,
-				"file" : 0,
-				"line" : 343,
-				"parent" : 4
-			},
-			{
-				"command" : 2,
-				"file" : 0,
-				"line" : 343,
+				"file" : 2,
 				"parent" : 4
 			},
 			{
 				"command" : 3,
-				"file" : 0,
-				"line" : 361,
-				"parent" : 3
+				"file" : 2,
+				"line" : 53,
+				"parent" : 5
 			},
 			{
 				"command" : 2,
-				"file" : 0,
-				"line" : 340,
-				"parent" : 7
+				"file" : 2,
+				"line" : 49,
+				"parent" : 6
+			},
+			{
+				"command" : 3,
+				"file" : 2,
+				"line" : 57,
+				"parent" : 5
+			},
+			{
+				"command" : 2,
+				"file" : 2,
+				"line" : 49,
+				"parent" : 8
+			},
+			{
+				"file" : 4
+			},
+			{
+				"command" : 2,
+				"file" : 4,
+				"line" : 77,
+				"parent" : 10
 			},
 			{
 				"command" : 5,
@@ -96,9 +112,9 @@
 			},
 			{
 				"command" : 5,
-				"file" : 2,
+				"file" : 5,
 				"line" : 281,
-				"parent" : 10
+				"parent" : 13
 			},
 			{
 				"command" : 7,
@@ -122,25 +138,31 @@
 				"command" : 9,
 				"file" : 0,
 				"line" : 319,
-				"parent" : 14
+				"parent" : 17
 			},
 			{
-				"command" : 9,
+				"command" : 13,
 				"file" : 0,
-				"line" : 319,
-				"parent" : 14
+				"line" : 517,
+				"parent" : 1
 			},
 			{
-				"command" : 9,
+				"command" : 12,
 				"file" : 0,
-				"line" : 319,
-				"parent" : 14
+				"line" : 361,
+				"parent" : 19
 			},
 			{
-				"command" : 2,
+				"command" : 11,
 				"file" : 0,
 				"line" : 340,
-				"parent" : 7
+				"parent" : 20
+			},
+			{
+				"command" : 11,
+				"file" : 0,
+				"line" : 340,
+				"parent" : 20
 			}
 		]
 	},
@@ -153,110 +175,110 @@
 					"fragment" : "-mlongcalls  -fno-builtin-memcpy -fno-builtin-memset -fno-builtin-bzero -fno-builtin-stpcpy -fno-builtin-strncpy -g -fdiagnostics-color=always"
 				},
 				{
-					"backtrace" : 9,
+					"backtrace" : 12,
 					"fragment" : "-ffunction-sections"
 				},
 				{
-					"backtrace" : 9,
+					"backtrace" : 12,
 					"fragment" : "-fdata-sections"
 				},
 				{
-					"backtrace" : 9,
+					"backtrace" : 12,
 					"fragment" : "-Wall"
 				},
 				{
-					"backtrace" : 9,
+					"backtrace" : 12,
 					"fragment" : "-Werror=all"
 				},
 				{
-					"backtrace" : 9,
+					"backtrace" : 12,
 					"fragment" : "-Wno-error=unused-function"
 				},
 				{
-					"backtrace" : 9,
+					"backtrace" : 12,
 					"fragment" : "-Wno-error=unused-variable"
 				},
 				{
-					"backtrace" : 9,
+					"backtrace" : 12,
 					"fragment" : "-Wno-error=unused-but-set-variable"
 				},
 				{
-					"backtrace" : 9,
+					"backtrace" : 12,
 					"fragment" : "-Wno-error=deprecated-declarations"
 				},
 				{
-					"backtrace" : 9,
+					"backtrace" : 12,
 					"fragment" : "-Wextra"
 				},
 				{
-					"backtrace" : 9,
+					"backtrace" : 12,
 					"fragment" : "-Wno-unused-parameter"
 				},
 				{
-					"backtrace" : 9,
+					"backtrace" : 12,
 					"fragment" : "-Wno-sign-compare"
 				},
 				{
-					"backtrace" : 9,
+					"backtrace" : 12,
 					"fragment" : "-Wno-enum-conversion"
 				},
 				{
-					"backtrace" : 9,
+					"backtrace" : 12,
 					"fragment" : "-gdwarf-4"
 				},
 				{
-					"backtrace" : 9,
+					"backtrace" : 12,
 					"fragment" : "-ggdb"
 				},
 				{
-					"backtrace" : 9,
+					"backtrace" : 12,
 					"fragment" : "-mdisable-hardware-atomics"
 				},
 				{
-					"backtrace" : 9,
+					"backtrace" : 12,
 					"fragment" : "-Og"
 				},
 				{
-					"backtrace" : 9,
+					"backtrace" : 12,
 					"fragment" : "-fno-shrink-wrap"
 				},
 				{
-					"backtrace" : 9,
+					"backtrace" : 12,
 					"fragment" : "-fmacro-prefix-map=D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi=."
 				},
 				{
-					"backtrace" : 9,
+					"backtrace" : 12,
 					"fragment" : "-fmacro-prefix-map=D:/Espressif/frameworks/esp-idf-v5.3.3=/IDF"
 				},
 				{
-					"backtrace" : 9,
+					"backtrace" : 12,
 					"fragment" : "-fstrict-volatile-bitfields"
 				},
 				{
-					"backtrace" : 9,
+					"backtrace" : 12,
 					"fragment" : "-fno-jump-tables"
 				},
 				{
-					"backtrace" : 9,
+					"backtrace" : 12,
 					"fragment" : "-fno-tree-switch-conversion"
 				},
 				{
-					"backtrace" : 11,
+					"backtrace" : 14,
 					"fragment" : "-std=gnu17"
 				},
 				{
-					"backtrace" : 11,
+					"backtrace" : 14,
 					"fragment" : "-Wno-old-style-declaration"
 				}
 			],
 			"defines" : 
 			[
 				{
-					"backtrace" : 12,
+					"backtrace" : 15,
 					"define" : "ESP_PLATFORM"
 				},
 				{
-					"backtrace" : 12,
+					"backtrace" : 15,
 					"define" : "IDF_VER=\"v5.3.3\""
 				},
 				{
@@ -268,39 +290,31 @@
 					"define" : "SOC_XTAL_FREQ_MHZ=CONFIG_XTAL_FREQ"
 				},
 				{
-					"backtrace" : 12,
+					"backtrace" : 15,
 					"define" : "_GLIBCXX_HAVE_POSIX_SEMAPHORE"
 				},
 				{
-					"backtrace" : 12,
+					"backtrace" : 15,
 					"define" : "_GLIBCXX_USE_POSIX_SEMAPHORE"
 				},
 				{
-					"backtrace" : 12,
+					"backtrace" : 15,
 					"define" : "_GNU_SOURCE"
 				},
 				{
-					"backtrace" : 12,
+					"backtrace" : 15,
 					"define" : "_POSIX_READER_WRITER_LOCKS"
 				}
 			],
 			"includes" : 
 			[
 				{
-					"backtrace" : 13,
+					"backtrace" : 16,
 					"path" : "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/build/config"
 				},
 				{
-					"backtrace" : 15,
-					"path" : "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/managed_components/espressif__esp-sr/esp-tts/esp_tts_chinese/include"
-				},
-				{
-					"backtrace" : 16,
-					"path" : "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/managed_components/espressif__esp-sr/include/esp32s3"
-				},
-				{
-					"backtrace" : 17,
-					"path" : "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/managed_components/espressif__esp-sr/src/include"
+					"backtrace" : 18,
+					"path" : "D:/Espressif/frameworks/esp-idf-v5.3.3/components/esp_psram/include"
 				},
 				{
 					"backtrace" : 2,
@@ -471,160 +485,12 @@
 					"path" : "D:/Espressif/frameworks/esp-idf-v5.3.3/components/lwip/port/esp32xx/include/sys"
 				},
 				{
-					"backtrace" : 5,
-					"path" : "D:/Espressif/frameworks/esp-idf-v5.3.3/components/json/cJSON"
-				},
-				{
-					"backtrace" : 6,
-					"path" : "D:/Espressif/frameworks/esp-idf-v5.3.3/components/spiffs/include"
-				},
-				{
-					"backtrace" : 6,
-					"path" : "D:/Espressif/frameworks/esp-idf-v5.3.3/components/esp_partition/include"
-				},
-				{
-					"backtrace" : 18,
+					"backtrace" : 21,
 					"path" : "D:/Espressif/frameworks/esp-idf-v5.3.3/components/spi_flash/include"
 				},
 				{
-					"backtrace" : 8,
-					"path" : "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/managed_components/espressif__dl_fft"
-				},
-				{
-					"backtrace" : 8,
-					"path" : "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/managed_components/espressif__dl_fft/base"
-				},
-				{
-					"backtrace" : 8,
-					"path" : "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/managed_components/espressif__dl_fft/base/isa"
-				},
-				{
-					"backtrace" : 8,
-					"path" : "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/managed_components/espressif__esp-dsp/modules/dotprod/include"
-				},
-				{
-					"backtrace" : 8,
-					"path" : "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/managed_components/espressif__esp-dsp/modules/support/include"
-				},
-				{
-					"backtrace" : 8,
-					"path" : "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/managed_components/espressif__esp-dsp/modules/support/mem/include"
-				},
-				{
-					"backtrace" : 8,
-					"path" : "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/managed_components/espressif__esp-dsp/modules/windows/include"
-				},
-				{
-					"backtrace" : 8,
-					"path" : "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/managed_components/espressif__esp-dsp/modules/windows/hann/include"
-				},
-				{
-					"backtrace" : 8,
-					"path" : "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/managed_components/espressif__esp-dsp/modules/windows/blackman/include"
-				},
-				{
-					"backtrace" : 8,
-					"path" : "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/managed_components/espressif__esp-dsp/modules/windows/blackman_harris/include"
-				},
-				{
-					"backtrace" : 8,
-					"path" : "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/managed_components/espressif__esp-dsp/modules/windows/blackman_nuttall/include"
-				},
-				{
-					"backtrace" : 8,
-					"path" : "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/managed_components/espressif__esp-dsp/modules/windows/nuttall/include"
-				},
-				{
-					"backtrace" : 8,
-					"path" : "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/managed_components/espressif__esp-dsp/modules/windows/flat_top/include"
-				},
-				{
-					"backtrace" : 8,
-					"path" : "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/managed_components/espressif__esp-dsp/modules/iir/include"
-				},
-				{
-					"backtrace" : 8,
-					"path" : "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/managed_components/espressif__esp-dsp/modules/fir/include"
-				},
-				{
-					"backtrace" : 8,
-					"path" : "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/managed_components/espressif__esp-dsp/modules/math/include"
-				},
-				{
-					"backtrace" : 8,
-					"path" : "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/managed_components/espressif__esp-dsp/modules/math/add/include"
-				},
-				{
-					"backtrace" : 8,
-					"path" : "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/managed_components/espressif__esp-dsp/modules/math/sub/include"
-				},
-				{
-					"backtrace" : 8,
-					"path" : "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/managed_components/espressif__esp-dsp/modules/math/mul/include"
-				},
-				{
-					"backtrace" : 8,
-					"path" : "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/managed_components/espressif__esp-dsp/modules/math/addc/include"
-				},
-				{
-					"backtrace" : 8,
-					"path" : "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/managed_components/espressif__esp-dsp/modules/math/mulc/include"
-				},
-				{
-					"backtrace" : 8,
-					"path" : "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/managed_components/espressif__esp-dsp/modules/math/sqrt/include"
-				},
-				{
-					"backtrace" : 8,
-					"path" : "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/managed_components/espressif__esp-dsp/modules/matrix/mul/include"
-				},
-				{
-					"backtrace" : 8,
-					"path" : "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/managed_components/espressif__esp-dsp/modules/matrix/add/include"
-				},
-				{
-					"backtrace" : 8,
-					"path" : "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/managed_components/espressif__esp-dsp/modules/matrix/addc/include"
-				},
-				{
-					"backtrace" : 8,
-					"path" : "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/managed_components/espressif__esp-dsp/modules/matrix/mulc/include"
-				},
-				{
-					"backtrace" : 8,
-					"path" : "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/managed_components/espressif__esp-dsp/modules/matrix/sub/include"
-				},
-				{
-					"backtrace" : 8,
-					"path" : "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/managed_components/espressif__esp-dsp/modules/matrix/include"
-				},
-				{
-					"backtrace" : 8,
-					"path" : "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/managed_components/espressif__esp-dsp/modules/fft/include"
-				},
-				{
-					"backtrace" : 8,
-					"path" : "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/managed_components/espressif__esp-dsp/modules/dct/include"
-				},
-				{
-					"backtrace" : 8,
-					"path" : "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/managed_components/espressif__esp-dsp/modules/conv/include"
-				},
-				{
-					"backtrace" : 8,
-					"path" : "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/managed_components/espressif__esp-dsp/modules/common/include"
-				},
-				{
-					"backtrace" : 8,
-					"path" : "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/managed_components/espressif__esp-dsp/modules/matrix/mul/test/include"
-				},
-				{
-					"backtrace" : 8,
-					"path" : "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/managed_components/espressif__esp-dsp/modules/kalman/ekf/include"
-				},
-				{
-					"backtrace" : 8,
-					"path" : "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/managed_components/espressif__esp-dsp/modules/kalman/ekf_imu13states/include"
+					"backtrace" : 22,
+					"path" : "D:/Espressif/frameworks/esp-idf-v5.3.3/components/esp_mm/include"
 				}
 			],
 			"language" : "C",
@@ -632,41 +498,32 @@
 			[
 				0,
 				1,
-				2,
-				3
+				2
 			]
 		}
 	],
 	"dependencies" : 
 	[
 		{
-			"backtrace" : 5,
-			"id" : "__idf_json::@c78a8bdc820334f01148"
+			"backtrace" : 7,
+			"id" : "memory.ld::@874df54e61e20112dfd4"
 		},
 		{
-			"backtrace" : 6,
-			"id" : "__idf_spiffs::@df881b71474064c86689"
+			"backtrace" : 9,
+			"id" : "sections.ld.in::@874df54e61e20112dfd4"
 		},
 		{
-			"backtrace" : 8,
-			"id" : "__idf_espressif__dl_fft::@3ccf17c791098cd2e665"
-		},
-		{
-			"backtrace" : 8,
-			"id" : "__idf_espressif__esp-dsp::@173cdc30d8d2ec42511f"
-		},
-		{
-			"backtrace" : 2,
-			"id" : "__idf_xtensa::@1daaaad7abe597e030f9"
+			"backtrace" : 11,
+			"id" : "custom_bundle::@9d0b8d44c897d31e7973"
 		}
 	],
-	"id" : "__idf_espressif__esp-sr::@6171f978ca351fd99ba3",
-	"name" : "__idf_espressif__esp-sr",
-	"nameOnDisk" : "libespressif__esp-sr.a",
+	"id" : "__idf_esp_psram::@222fc793c25100a4848d",
+	"name" : "__idf_esp_psram",
+	"nameOnDisk" : "libesp_psram.a",
 	"paths" : 
 	{
-		"build" : "esp-idf/espressif__esp-sr",
-		"source" : "managed_components/espressif__esp-sr"
+		"build" : "esp-idf/esp_psram",
+		"source" : "D:/Espressif/frameworks/esp-idf-v5.3.3/components/esp_psram"
 	},
 	"sourceGroups" : 
 	[
@@ -676,8 +533,7 @@
 			[
 				0,
 				1,
-				2,
-				3
+				2
 			]
 		}
 	],
@@ -686,25 +542,19 @@
 		{
 			"backtrace" : 2,
 			"compileGroupIndex" : 0,
-			"path" : "managed_components/espressif__esp-sr/src/model_path.c",
+			"path" : "D:/Espressif/frameworks/esp-idf-v5.3.3/components/esp_psram/esp_psram.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 2,
 			"compileGroupIndex" : 0,
-			"path" : "managed_components/espressif__esp-sr/src/esp_sr_debug.c",
+			"path" : "D:/Espressif/frameworks/esp-idf-v5.3.3/components/esp_psram/mmu_psram_flash.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 2,
 			"compileGroupIndex" : 0,
-			"path" : "managed_components/espressif__esp-sr/src/esp_mn_speech_commands.c",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 2,
-			"compileGroupIndex" : 0,
-			"path" : "managed_components/espressif__esp-sr/src/esp_process_sdkconfig.c",
+			"path" : "D:/Espressif/frameworks/esp-idf-v5.3.3/components/esp_psram/esp32s3/esp_psram_impl_quad.c",
 			"sourceGroupIndex" : 0
 		}
 	],

@@ -7,14 +7,15 @@
 #ifndef __BSP_ES8311_H__
 #define __BSP_ES8311_H__
 
+#include "driver/gpio.h"
+#include "driver/i2c.h"
 #include "driver/i2s_std.h"
 #include "driver/i2s_tdm.h"
-#include "soc/soc_caps.h"
 #include "esp_codec_dev.h"
 #include "esp_codec_dev_defaults.h"
+#include "soc/soc_caps.h"
 #include "unity.h"
-#include "driver/i2c.h"
-#include "driver/gpio.h"
+
 
 #define ES8311_I2C_SDA GPIO_NUM_0
 #define ES8311_I2C_SCL GPIO_NUM_1

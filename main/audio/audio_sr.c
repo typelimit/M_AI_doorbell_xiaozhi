@@ -4,6 +4,7 @@
 #include "esp_afe_config.h"
 #include "esp_afe_sr_iface.h"
 #include "esp_afe_sr_models.h"
+#include "esp_codec_dev_types.h"
 #include "esp_vad.h"
 #include "esp_wn_iface.h"
 #include "freertos/ringbuf.h"
@@ -12,6 +13,7 @@
 #include <assert.h>
 #include <stdint.h>
 #include <stdlib.h>
+#include <sys/_intsup.h>
 
 struct audio_sr {
 
@@ -55,9 +57,10 @@ void audio_sr_feed_task(void *args) {
 
   while (1) {
 
-    // 从mic读数据
+    // 从Mic读取数据
     bsp_es8311_read_from_mic((void *)feed_buff, len);
-    //  将数据写入AFE框架
+
+    // 将数据写入AFE框架
     afe_handle->feed(afe_data, feed_buff);
 
     vTaskDelay(10);

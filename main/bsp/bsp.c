@@ -1,5 +1,7 @@
 #include "bsp.h"
+#include "bsp_display.h"
 #include "bsp_es8311.h"
+#include "bsp_lcd.h"
 #include "bsp_nvs.h"
 #include "bsp_wifi.h"
 #include "bsp_ws2812.h"
@@ -18,11 +20,20 @@ static bsp_nvs_t *bsp_nvs;
  *
  */
 void bsp_init(void) {
+
+  bsp_lcd_init();
+
+  bsp_display_init();
+
   bsp_wifi_init();
+
   bsp_es8311_init();
+
   bsp_es8311_open();
 
   bsp_ws2812_init();
+
+  // bsp_ws2812_Led_On();
 
   bsp_nvs = bsp_nvs_init();
 }

@@ -1,7 +1,7 @@
 # Additional clean files
 cmake_minimum_required(VERSION 3.16)
 
-if("${CONFIG}" STREQUAL "" OR "${CONFIG}" STREQUAL "")
+if("${CONFIG}" STREQUAL "" OR "${CONFIG}" STREQUAL "Debug")
   file(REMOVE_RECURSE
   "M_AI_doorbell_xiaozhi.bin"
   "M_AI_doorbell_xiaozhi.map"

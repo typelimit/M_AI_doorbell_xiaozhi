@@ -19,7 +19,8 @@
 #include "esp_websocket_client.h"
 #include <cJSON.h>
 
-extern char *session_id;
+extern char session_id[9];
+extern EventGroupHandle_t event_group; // 事件标志组拿出以后供main使用
 
 typedef void (*text_callback)(const char *, int);
 typedef void (*bin_callback)(const char *, int);
@@ -45,5 +46,9 @@ void pro_ws_send_stop(void);
 void pro_ws_send_abort(void);
 
 void pro_ws_send_opus(void *data, size_t len);
+
+void pro_ws_send_device_info(void);
+
+void pro_ws_send_device_state(void);
 
 #endif /* __PRO_WS_H__ */

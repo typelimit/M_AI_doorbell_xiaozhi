@@ -2,13 +2,13 @@
 #define __AUDIO_SR_H__
 #include "bsp_es8311.h"
 #include "com_debug.h"
+#include "com_status.h"
 #include "esp_afe_sr_iface.h"
 #include "esp_afe_sr_models.h"
 #include "esp_heap_caps.h"
 #include "esp_task.h"
 #include "esp_vad.h"
 #include "freertos/ringbuf.h"
-
 
 // 这里被声明的结构体，它所承载的信息是什么？
 typedef struct audio_sr audio_sr_t;

@@ -83,6 +83,8 @@ D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/build/esp-idf/spiffs/libspiffs.a
 D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/build/esp-idf/touch_element/libtouch_element.a
 D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/build/esp-idf/usb/libusb.a
 D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/build/esp-idf/wifi_provisioning/libwifi_provisioning.a
+D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/build/esp-idf/lvgl__lvgl/liblvgl__lvgl.a
+D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/build/esp-idf/78__xiaozhi-fonts/lib78__xiaozhi-fonts.a
 D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/build/esp-idf/espressif__esp-dsp/libespressif__esp-dsp.a
 D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/build/esp-idf/espressif__dl_fft/libespressif__dl_fft.a
 D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/build/esp-idf/espressif__esp-sr/libespressif__esp-sr.a

@@ -1,12 +1,15 @@
 #include "audio_sr.h"
 #include "bsp_es8311.h"
 #include "com_debug.h"
+#include "com_status.h"
 #include "esp_afe_config.h"
 #include "esp_afe_sr_iface.h"
 #include "esp_afe_sr_models.h"
 #include "esp_codec_dev_types.h"
+#include "esp_heap_caps.h"
 #include "esp_vad.h"
 #include "esp_wn_iface.h"
+#include "freertos/idf_additions.h"
 #include "freertos/ringbuf.h"
 #include "portmacro.h"
 #include "protocomm_console.h"
@@ -87,12 +90,16 @@ void audio_sr_fetch_task(void *args) {
   size_t len = feed_chunksize * feed_nch * sizeof(int16_t);
 
   while (1) {
+
     // 获取语音活动检测结果
     afe_fetch_result_t *result = afe_handle->fetch(afe_data);
+
     // 获取音频结果
     int16_t *processed_audio = result->raw_data;
+
     // 获取语音活动检测状态
     vad_state_t vad_state = result->vad_state;
+
     // 获取唤醒状态
     wakenet_state_t wakeup_state = result->wakeup_state;
 
@@ -115,17 +122,19 @@ void audio_sr_fetch_task(void *args) {
         audio_sr->last_vad_state = vad_state;
 
         if (audio_sr->vad_callback) {
+
           audio_sr->vad_callback(audio_sr->vad_args, vad_state);
         }
       }
       // 若当前有人说话则保留语音
-      if (vad_state == VAD_SPEECH) {
+      if (vad_state == VAD_SPEECH && xiaozhi_status == LISTENING) {
         // MY_LOGE("开始循环抓取语音...");
         xRingbufferSend(audio_sr->ringbuffer, processed_audio, len,
                         portMAX_DELAY);
       }
     }
-    vTaskDelay(10); // 刚才把taskdelay放在while外面了，导致任务没拉起来
+    // 这个延时疑似多余
+    // vTaskDelay(10); 
   }
 }
 
@@ -163,12 +172,14 @@ audio_sr_t *audio_sr_init(void) {
 
 void audio_sr_start(audio_sr_t *audio_sr) {
 
-  xTaskCreate(audio_sr_fetch_task, "fetch task", 32 * 1024, audio_sr, 5, NULL);
-  xTaskCreate(audio_sr_feed_task, "feed task", 32 * 1024, audio_sr, 5, NULL);
+  xTaskCreateWithCaps(audio_sr_fetch_task, "fetch task", 32 * 1024, audio_sr, 5,
+                      NULL, MALLOC_CAP_SPIRAM);
+  xTaskCreateWithCaps(audio_sr_feed_task, "feed task", 32 * 1024, audio_sr, 5,
+                      NULL, MALLOC_CAP_SPIRAM);
 }
 
 /**
- * @brief 设置输出环形缓冲区
+ * @brief 把传入的参数赋给语音识别模块的环形缓冲
  *
  * @param audio_sr
  * @param ringbuf
@@ -179,7 +190,7 @@ void audio_sr_set_ringbuffer(audio_sr_t *audio_sr, RingbufHandle_t ringbuf) {
 }
 
 /**
- * @brief 设置唤醒回调函数
+ * @brief 将外部写好的唤醒词回调函数注入注入audio_sr对象
  *
  * @param audio_sr
  * @param callback
@@ -193,7 +204,7 @@ void audio_sr_set_wakenet_callback(audio_sr_t *audio_sr,
 }
 
 /**
- * @brief 设置语音活动检测回调函数
+ * @brief 把外部写好的语音活动检测回调函数注入audio_sr对象
  *
  * @param audio_sr
  * @param callback
@@ -206,8 +217,9 @@ void audio_sr_set_vad_callback(audio_sr_t *audio_sr,
   audio_sr->vad_callback = callback;
   audio_sr->vad_args = args;
 }
+
 /**
- * @brief 重置为未唤醒状态
+ * @brief 将audio_sr的对象唤醒标志位置为0
  *
  * @param audio_sr
  */

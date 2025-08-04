@@ -4,11 +4,18 @@
 - [NOTE List](#note-list)
   - [NOTE-audio-encode 对环形缓冲区数据的使用](#note-audio-encode-对环形缓冲区数据的使用)
   - [NOTE-pro-http 没看懂的free](#note-pro-http-没看懂的free)
-  - [NOTE-bsp-mutable-buffer 没看懂的可边长数组内存机制](#note-bsp-mutable-buffer-没看懂的可边长数组内存机制)
+  - [NOTE-bsp-mutable-buffer 没看懂的可变长数组内存机制](#note-bsp-mutable-buffer-没看懂的可变长数组内存机制)
+  - [NOTE-main 小智的IDLE到底说明什么？](#note-main-小智的idle到底说明什么)
+
 
 # Bug List
 
 ## Bug-App-ws 
+
+
+
+
+
 
 
 # NOTE List
@@ -58,7 +65,6 @@ read_len应该是一直等于max_size的，除非这里的超时判断用的不�
 nvs和flash的区别是什么？
 
 
-
 ## NOTE-pro-http 没看懂的free
 
 ```c
@@ -72,7 +78,7 @@ void bsp_mutable_buffer_free(mutable_buffer_t *mutable_buffer) {
 }
 ```
 
-## NOTE-bsp-mutable-buffer 没看懂的可边长数组内存机制
+## NOTE-bsp-mutable-buffer 没看懂的可变长数组内存机制
 ```c
 void bsp_mutable_buffer_append_data(mutable_buffer_t *mutable_buffer,
                                     char *data, size_t len) {
@@ -88,3 +94,6 @@ void bsp_mutable_buffer_append_data(mutable_buffer_t *mutable_buffer,
   mutable_buffer->buffer = buf;
 }
 ```
+
+
+## NOTE-main 小智的IDLE到底说明什么？

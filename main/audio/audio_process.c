@@ -46,7 +46,7 @@ void aduio_process_task(void *args) {
       len = 0;
     }
 
-    vTaskDelay(5);
+    // vTaskDelay(5);
   }
 }
 
@@ -132,6 +132,7 @@ void *audio_process_read_data(audio_processor_t *audio_processor, size_t *len) {
 
 void audio_process_write_data(audio_processor_t *audio_processor, uint8_t *data,
                               size_t len) {
+  // 数据写入到解码输入缓冲当中————它的下一站是speaker
   xRingbufferSend(audio_processor->decode_input_buffer, data, len,
                   portMAX_DELAY);
 }

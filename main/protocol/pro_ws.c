@@ -1,23 +1,33 @@
 #include "pro_ws.h"
+#include "audio_process.h"
 #include "bsp.h"
 #include "cJSON.h"
 #include "com_debug.h"
+#include "com_status.h"
 #include "esp_crt_bundle.h"
+#include "esp_heap_caps.h"
 #include "esp_transport_ssl.h"
 #include "esp_websocket_client.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/projdefs.h"
 #include "portmacro.h"
+#include <stddef.h>
+#include <stdio.h>
+#include <string.h>
+
+// 这里还需要这个extern吗？——————误会了，这个没有暴露在头文件，需要extern
+extern audio_processor_t *audio_processor;
 
 #define CONN_SUCCESS (1 << 0)
 
 static esp_websocket_client_handle_t client; // 作为对象的客户端结构体
-static EventGroupHandle_t event_group;       // 事件标志组
+EventGroupHandle_t
+    event_group; // 事件标志组————给ws_start发送通知，保证连接成功以后才继续
 
 text_callback ws_text_callback; // 处理文本的回调函数指针
 bin_callback ws_bin_callback;   // 处理音频的回调函数指针
 
-char *session_id; // 被存储的会话id
+char session_id[9]; // 被存储的会话id
 
 /**
  * @brief 打印错误ws错误日志
@@ -126,6 +136,9 @@ static void websocket_event_handler(void *handler_args, esp_event_base_t base,
 
   case WEBSOCKET_EVENT_FINISH:
     MY_LOGI("WEBSOCKET_EVENT_FINISH");
+    audio_process_reset_wakenet(audio_processor);
+    // WS结束事件时小智变为空闲————也就是说，这个时候小智进入待机状态，直到接收唤醒词才会再次监听？
+    com_status_switch_status(IDLE);
     break;
   }
 }
@@ -242,6 +255,8 @@ void pro_ws_send_wakenet_word(void) {
     // 释放资源
     free(json_str);
     cJSON_Delete(root_json);
+  } else {
+    MY_LOGE("客户端未初始化或未连接...");
   }
 }
 
@@ -260,13 +275,16 @@ void pro_ws_send_listen(void) {
     cJSON_AddStringToObject(root_json, "state", "start");
     cJSON_AddStringToObject(root_json, "type", "listen");
 
-    // 发送消息
+    // 将json转为字符串并发送
     char *json_str = cJSON_PrintUnformatted(root_json);
     esp_websocket_client_send_text(client, json_str, strlen(json_str),
                                    portMAX_DELAY);
-    // 释放资源
+
+    // 释放json资源
     free(json_str);
     cJSON_Delete(root_json);
+  } else {
+    MY_LOGE("客户端未初始化或未连接...");
   }
 }
 
@@ -284,10 +302,12 @@ void pro_ws_send_stop(void) {
     cJSON_AddStringToObject(root_json, "state", "stop");
     cJSON_AddStringToObject(root_json, "type", "listen");
 
+    // 将json转为字符串并发送
     char *json_str = cJSON_PrintUnformatted(root_json);
     esp_websocket_client_send_text(client, json_str, strlen(json_str),
                                    portMAX_DELAY);
 
+    // 释放json资源
     free(json_str);
     cJSON_Delete(root_json);
   } else {
@@ -310,12 +330,17 @@ void pro_ws_send_abort(void) {
     cJSON_AddStringToObject(root_json, "reason", "wake_word_detected");
     cJSON_AddStringToObject(root_json, "type", "abort");
 
+    // 将json转为字符串并发送
     char *json_str = cJSON_PrintUnformatted(root_json);
     esp_websocket_client_send_text(client, json_str, strlen(json_str),
                                    portMAX_DELAY);
-
+    // 释放json资源
     free(json_str);
     cJSON_Delete(root_json);
+
+  } else {
+
+    MY_LOGE("客户端未初始化或者未连接.....");
   }
 }
 
@@ -328,11 +353,74 @@ void pro_ws_send_abort(void) {
 void pro_ws_send_opus(void *data, size_t len) {
 
   if (client != NULL && esp_websocket_client_is_connected(client)) {
-    
+
     esp_websocket_client_send_bin(client, (char *)data, (int)len,
                                   portMAX_DELAY);
   } else {
 
     MY_LOGE("客户端未连接");
+  }
+}
+
+void pro_ws_send_device_info(void) {
+  if (client != NULL && esp_websocket_client_is_connected(client)) {
+
+    const char *device_info =
+        "{\"descriptors\":[{\"description\":\"Speaker\",\"methods\":{"
+        "\"SetMute\":"
+        "{\"description\":\"Set mute "
+        "status\",\"parameters\":{\"mute\":{\"description\":\"Mute "
+        "status\",\"type\":\"boolean\"}}},\"SetVolume\":{\"description\":\"Set "
+        "volume level\",\"parameters\":{\"volume\":{\"description\":\"Volume "
+        "level[0-100]\",\"type\":\"number\"}}}},\"name\":\"Speaker\","
+        "\"properties\":{\"mute\":{\"description\":\"Mute "
+        "status\",\"type\":\"boolean\"},\"volume\":{\"description\":\"Volume "
+        "level[0-100]\",\"type\":\"number\"}}}],\"session_id\":\"%s\","
+        "\"type\":\"iot\",\"update\":true}";
+
+    size_t str_len = strlen(device_info) + strlen(session_id) + 16;
+    char *json_str = heap_caps_malloc(str_len, MALLOC_CAP_SPIRAM);
+
+    if (json_str == NULL) {
+      MY_LOGE("json_str内存分配失败！！！");
+      return;
+    }
+
+    snprintf(json_str, str_len, device_info, session_id);
+
+    esp_websocket_client_send_text(client, json_str, strlen(json_str),
+                                   portMAX_DELAY);
+    heap_caps_free(json_str);
+  } else {
+
+    MY_LOGE("客户端未初始化或者未连接.....");
+  }
+}
+
+void pro_ws_send_device_state(void) {
+
+  if (client != NULL && esp_websocket_client_is_connected(client)) {
+
+    const char *device_state =
+        "{\"session_id\":\"%s\",\"states\":[{\"name\":\"Speaker\","
+        "\"state\":{\"mute\":false,\"volume\":60}}],\"type\":\"iot\","
+        "\"update\":"
+        "true}";
+
+    size_t str_len = strlen(device_state) + strlen(session_id) + 16;
+    char *json_str = heap_caps_malloc(str_len, MALLOC_CAP_SPIRAM);
+
+    if (json_str == NULL) {
+      MY_LOGE("json_str内存分配失败！！！");
+      return;
+    }
+
+    snprintf(json_str, str_len, device_state, session_id);
+
+    esp_websocket_client_send_text(client, json_str, strlen(json_str),
+                                   portMAX_DELAY);
+    heap_caps_free(json_str);
+  } else {
+    MY_LOGE("客户端未初始化或者未连接.....");
   }
 }

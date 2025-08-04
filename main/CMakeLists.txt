@@ -14,6 +14,9 @@ idf_component_register(
   "./audio/audio_process.c"
   "./protocol/pro_https.c"
   "./protocol/pro_ws.c"
+  "./com/com_status.c"
+  "./bsp/bsp_lcd.c"
+  "./bsp/bsp_display.c"
   INCLUDE_DIRS
   "."
   "./bsp"

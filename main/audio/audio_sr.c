@@ -134,7 +134,7 @@ void audio_sr_fetch_task(void *args) {
       }
     }
     // 这个延时疑似多余
-    // vTaskDelay(10); 
+    // vTaskDelay(10);
   }
 }
 

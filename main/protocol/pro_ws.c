@@ -362,21 +362,96 @@ void pro_ws_send_opus(void *data, size_t len) {
   }
 }
 
+/**
+ * @brief 在这里发送设备信息
+ *
+ */
 void pro_ws_send_device_info(void) {
   if (client != NULL && esp_websocket_client_is_connected(client)) {
 
-    const char *device_info =
-        "{\"descriptors\":[{\"description\":\"Speaker\",\"methods\":{"
-        "\"SetMute\":"
-        "{\"description\":\"Set mute "
-        "status\",\"parameters\":{\"mute\":{\"description\":\"Mute "
-        "status\",\"type\":\"boolean\"}}},\"SetVolume\":{\"description\":\"Set "
-        "volume level\",\"parameters\":{\"volume\":{\"description\":\"Volume "
-        "level[0-100]\",\"type\":\"number\"}}}},\"name\":\"Speaker\","
-        "\"properties\":{\"mute\":{\"description\":\"Mute "
-        "status\",\"type\":\"boolean\"},\"volume\":{\"description\":\"Volume "
-        "level[0-100]\",\"type\":\"number\"}}}],\"session_id\":\"%s\","
-        "\"type\":\"iot\",\"update\":true}";
+    const char *device_info = "{"
+                              "\"descriptors\":["
+                              "{"
+                              "\"description\":\"Speaker\","
+                              "\"methods\":{"
+                              "\"SetMute\":{"
+                              "\"description\":\"Set mute status\","
+                              "\"parameters\":{"
+                              "\"mute\":{"
+                              "\"description\":\"Mute status\","
+                              "\"type\":\"boolean\""
+                              "}"
+                              "}"
+                              "},"
+                              "\"SetVolume\":{"
+                              "\"description\":\"Set volume level\","
+                              "\"parameters\":{"
+                              "\"volume\":{"
+                              "\"description\":\"Volume level [0-100]\","
+                              "\"type\":\"number\""
+                              "}"
+                              "}"
+                              "}"
+                              "},"
+                              "\"name\":\"Speaker\","
+                              "\"properties\":{"
+                              "\"mute\":{"
+                              "\"description\":\"Mute status\","
+                              "\"type\":\"boolean\""
+                              "},"
+                              "\"volume\":{"
+                              "\"description\":\"Volume level [0-100]\","
+                              "\"type\":\"number\""
+                              "}"
+                              "}"
+                              "},"
+                              "{"
+                              "\"description\":\"LED\","
+                              "\"methods\":{"
+                              "\"SetPower\":{"
+                              "\"description\":\"Turn LED on or off\","
+                              "\"parameters\":{"
+                              "\"power\":{"
+                              "\"description\":\"LED power state\","
+                              "\"type\":\"boolean\""
+                              "}"
+                              "}"
+                              "}"
+                              "},"
+                              "\"name\":\"LED\","
+                              "\"properties\":{"
+                              "\"power\":{"
+                              "\"description\":\"LED power state\","
+                              "\"type\":\"boolean\""
+                              "}"
+                              "}"
+                              "},"
+                              "{"
+                              "\"description\":\"Display\","
+                              "\"methods\":{"
+                              "\"SetBrightness\":{"
+                              "\"description\":\"Set display brightness\","
+                              "\"parameters\":{"
+                              "\"brightness\":{"
+                              "\"description\":\"Display brightness [0-100]\","
+                              "\"type\":\"number\""
+                              "}"
+                              "}"
+                              "}"
+                              "},"
+                              "\"name\":\"Display\","
+                              "\"properties\":{"
+                              "\"brightness\":{"
+                              "\"description\":\"Display brightness [0-100]\","
+                              "\"type\":\"number\""
+                              "}"
+                              "}"
+                              "}"
+                              "],"
+                              "\"session_id\":\"%s\","
+                              "\"type\":\"iot\","
+                              "\"update\":true"
+                              "}";
 
     size_t str_len = strlen(device_info) + strlen(session_id) + 16;
     char *json_str = heap_caps_malloc(str_len, MALLOC_CAP_SPIRAM);
@@ -397,15 +472,40 @@ void pro_ws_send_device_info(void) {
   }
 }
 
+/**
+ * @brief 在这里发送设备状态
+ *
+ */
 void pro_ws_send_device_state(void) {
 
   if (client != NULL && esp_websocket_client_is_connected(client)) {
 
-    const char *device_state =
-        "{\"session_id\":\"%s\",\"states\":[{\"name\":\"Speaker\","
-        "\"state\":{\"mute\":false,\"volume\":60}}],\"type\":\"iot\","
-        "\"update\":"
-        "true}";
+    const char *device_state = "{"
+                               "\"session_id\":\"%s\","
+                               "\"states\":["
+                               "{"
+                               "\"name\":\"Speaker\","
+                               "\"state\":{"
+                               "\"mute\":false,"
+                               "\"volume\":60"
+                               "}"
+                               "},"
+                               "{"
+                               "\"name\":\"LED\","
+                               "\"state\":{"
+                               "\"power\":true"
+                               "}"
+                               "},"
+                               "{"
+                               "\"name\":\"Display\","
+                               "\"state\":{"
+                               "\"brightness\":80"
+                               "}"
+                               "}"
+                               "],"
+                               "\"type\":\"iot\","
+                               "\"update\":true"
+                               "}";
 
     size_t str_len = strlen(device_state) + strlen(session_id) + 16;
     char *json_str = heap_caps_malloc(str_len, MALLOC_CAP_SPIRAM);

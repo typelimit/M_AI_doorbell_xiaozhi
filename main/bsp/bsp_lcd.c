@@ -44,6 +44,8 @@ void bsp_lcd_init(void) {
       .rgb_ele_order = LCD_RGB_ELEMENT_ORDER_RGB,
       .bits_per_pixel = 16,
   };
+  // 初始化pwm输出
+  bsp_lcd_pwm_init();
 
   esp_lcd_new_panel_st7789(io_handle, &panel_config, &panel_handle);
   // 重置lcd
@@ -56,7 +58,42 @@ void bsp_lcd_init(void) {
   esp_lcd_panel_mirror(panel_handle, true, true);
   // 打开lcd
   esp_lcd_panel_disp_on_off(panel_handle, true);
+  // 设置初始背光亮度
+  bsp_lcd_set_brightness(100);
 
   MY_LOGI("Turn on LCD backlight");
   gpio_set_level(PIN_NUM_BK_LIGHT, LCD_BK_LIGHT_ON_LEVEL);
+}
+
+void bsp_lcd_pwm_init(void) {
+
+  ledc_timer_config_t ledc_timer = {
+      .speed_mode = LCD_BK_LIGHT_PWM_MODE,
+      .timer_num = LCD_BK_LIGHT_PWM_TIMER,
+      .duty_resolution = LEDC_TIMER_10_BIT, // 0-1023
+      .freq_hz = 5000, // 5 kHz, 背光别太低频不然会闪
+      .clk_cfg = LEDC_AUTO_CLK};
+  ESP_ERROR_CHECK(ledc_timer_config(&ledc_timer));
+
+  ledc_channel_config_t ledc_channel = {.speed_mode = LCD_BK_LIGHT_PWM_MODE,
+                                        .channel = LCD_BK_LIGHT_PWM_CHANNEL,
+                                        .timer_sel = LCD_BK_LIGHT_PWM_TIMER,
+                                        .intr_type = LEDC_INTR_DISABLE,
+                                        .gpio_num = LCD_BK_LIGHT_GPIO,
+                                        .duty = 0, // 默认关
+                                        .hpoint = 0};
+  ESP_ERROR_CHECK(ledc_channel_config(&ledc_channel));
+}
+
+void bsp_lcd_set_brightness(int brightness) {
+  // 边界保护，防爆
+  if (brightness < 0)
+    brightness = 0;
+  if (brightness > 100)
+    brightness = 100;
+
+  // 10位分辨率：0~1023
+  uint32_t duty = brightness * 1023 / 100;
+  ledc_set_duty(LEDC_LOW_SPEED_MODE, LCD_BK_LIGHT_PWM_CHANNEL, duty);
+  ledc_update_duty(LEDC_LOW_SPEED_MODE, LCD_BK_LIGHT_PWM_CHANNEL);
 }

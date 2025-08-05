@@ -1,18 +1,18 @@
 #ifndef __BSP_LCD_H__
 #define __BSP_LCD_H__
 
+#include "com_debug.h"
 #include "driver/gpio.h"
+#include "driver/ledc.h" // 补上 PWM 驱动头
 #include "driver/spi_master.h"
 #include "esp_lcd_panel_io.h"
 #include "esp_lcd_panel_ops.h"
 #include "esp_lcd_panel_vendor.h"
-
-#include "com_debug.h"
 #include "esp_lcd_types.h"
 
 #define LCD_PIXEL_CLOCK_HZ (20 * 1000 * 1000)
 #define LCD_BK_LIGHT_ON_LEVEL 1
-#define LCD_BK_LIGHT_OFF_LEVEL !EXAMPLE_LCD_BK_LIGHT_ON_LEVEL
+#define LCD_BK_LIGHT_OFF_LEVEL 0 // 推荐直接写0
 #define PIN_NUM_SCLK 47
 #define PIN_NUM_MOSI 48
 #define PIN_NUM_MISO 18
@@ -26,9 +26,19 @@
 
 #define LCD_HOST SPI2_HOST
 
+#define LCD_BK_LIGHT_PWM_TIMER LEDC_TIMER_0
+#define LCD_BK_LIGHT_PWM_MODE LEDC_LOW_SPEED_MODE
+#define LCD_BK_LIGHT_PWM_CHANNEL LEDC_CHANNEL_0
+#define LCD_BK_LIGHT_GPIO PIN_NUM_BK_LIGHT // 你的背光 GPIO
+
 extern esp_lcd_panel_io_handle_t io_handle;
 extern esp_lcd_panel_handle_t panel_handle;
 
+// ========== 屏幕相关 ==========
 void bsp_lcd_init(void);
+
+// ========== 背光PWM相关 ==========
+void bsp_lcd_pwm_init(void);                 // PWM初始化
+void bsp_lcd_set_brightness(int brightness); // 设置亮度（0~100）
 
 #endif /* __BSP_LCD_H__ */

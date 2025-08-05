@@ -70,38 +70,51 @@ void app_ws_text_callback(const char *data, int len) {
   } else if (strcmp("iot", type_str) == 0) {
 
     MY_LOGE("接收到iot消息%.*s", len, data);
-    // 解析json——取出commonds
     cJSON *commands = cJSON_GetObjectItem(root_json, "commands");
     int size_cmd = cJSON_GetArraySize(commands);
     for (int i = 0; i < size_cmd; i++) {
-
-      // 取出数组中的每单个项
       cJSON *item = cJSON_GetArrayItem(commands, i);
-      cJSON *method = cJSON_GetObjectItem(item, "method");
-      char *method_val = cJSON_GetStringValue(method);
-      // 判断操作类型
-      if (strcmp(method_val, "SetVolume") == 0) {
-        // 取出第二层的项
-        cJSON *parameters = cJSON_GetObjectItem(item, "parameters");
-        // 取出第三层的项
-        cJSON *volume = cJSON_GetObjectItem(parameters, "volume");
-        // 取出项内的值
-        int volume_val = (int)cJSON_GetNumberValue(volume);
-        // 把取出来的值设置进去
-        bsp_es8311_set_vol(volume_val);
-        // 判断操作类型
-      } else if (strcmp(method_val, "SetMute") == 0) {
+      // 先解析对象名
+      cJSON *name_json = cJSON_GetObjectItem(item, "name");
+      char *name_str = cJSON_GetStringValue(name_json);
+      if (!name_str)
+        continue; // 没name直接跳过
+      cJSON *method_json = cJSON_GetObjectItem(item, "method");
+      char *method_str = cJSON_GetStringValue(method_json);
+      cJSON *parameters = cJSON_GetObjectItem(item, "parameters");
 
-        cJSON *parameters = cJSON_GetObjectItem(item, "parameters");
-        cJSON *mute = cJSON_GetObjectItem(parameters, "mute");
-
-        if (cJSON_IsTrue(mute)) {
-
-          bsp_es8311_set_mute(true);
-        } else {
-          bsp_es8311_set_mute(false);
+      // -------- Speaker -----------
+      if (strcmp(name_str, "Speaker") == 0) {
+        if (strcmp(method_str, "SetVolume") == 0) {
+          int volume =
+              cJSON_GetNumberValue(cJSON_GetObjectItem(parameters, "volume"));
+          bsp_es8311_set_vol(volume);
+        } else if (strcmp(method_str, "SetMute") == 0) {
+          bool mute = cJSON_IsTrue(cJSON_GetObjectItem(parameters, "mute"));
+          bsp_es8311_set_mute(mute);
         }
       }
+      // -------- LED/WS2812 -----------
+      else if (strcmp(name_str, "LED") == 0 ||
+               strcmp(name_str, "WS2812") == 0) {
+        if (strcmp(method_str, "SetPower") == 0) {
+          bool power = cJSON_IsTrue(cJSON_GetObjectItem(parameters, "power"));
+          if (power) {
+            bsp_ws2812_Led_On();
+          } else {
+            bsp_ws2812_Led_Off();
+          }
+        }
+      }
+      // -------- Display -----------
+      else if (strcmp(name_str, "Display") == 0) {
+        if (strcmp(method_str, "SetBrightness") == 0) {
+          int brightness = cJSON_GetNumberValue(
+              cJSON_GetObjectItem(parameters, "brightness"));
+          bsp_lcd_set_brightness(brightness);
+        }
+      }
+      // -------- 你可以无限拓展其它对象 -----------
     }
 
   } else if (strcmp("tts", type_str) == 0) {

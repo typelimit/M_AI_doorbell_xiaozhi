@@ -24,14 +24,14 @@ void bsp_init(void) {
   bsp_lcd_init();
 
   bsp_display_init();
-
+  bsp_ws2812_init();
+  
+  
   bsp_wifi_init();
-
+  
   bsp_es8311_init();
-
   bsp_es8311_open();
 
-  bsp_ws2812_init();
 
   // bsp_ws2812_Led_On();
 

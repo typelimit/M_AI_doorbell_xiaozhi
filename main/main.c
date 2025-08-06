@@ -29,6 +29,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "pro_mqtt.h"
+
 audio_processor_t *audio_processor;
 
 /**
@@ -94,6 +96,7 @@ void app_ws_text_callback(const char *data, int len) {
           bsp_es8311_set_mute(mute);
         }
       }
+      
       // -------- LED/WS2812 -----------
       else if (strcmp(name_str, "LED") == 0 ||
                strcmp(name_str, "WS2812") == 0) {
@@ -106,6 +109,7 @@ void app_ws_text_callback(const char *data, int len) {
           }
         }
       }
+
       // -------- Display -----------
       else if (strcmp(name_str, "Display") == 0) {
         if (strcmp(method_str, "SetBrightness") == 0) {
@@ -114,7 +118,42 @@ void app_ws_text_callback(const char *data, int len) {
           bsp_lcd_set_brightness(brightness);
         }
       }
-      // -------- 你可以无限拓展其它对象 -----------
+
+      // -------- Motor（电机） ----------
+      else if (strcmp(name_str, "Motor") == 0) {
+        // 你的命令设计可以有不同的method，比如SetSpeed、SetStatus等
+        int targetSpeed = 0;
+        int motorStatus = 0;
+        int id = 1; // 可用常量/变量指定，后续多电机可用参数
+        char *connectType = "can"; // 这里写死can
+
+        // 解析指令
+        if (strcmp(method_str, "SetSpeed") == 0) {
+          targetSpeed =
+              cJSON_GetNumberValue(cJSON_GetObjectItem(parameters, "speed"));
+        }
+        if (strcmp(method_str, "SetStatus") == 0) {
+          motorStatus =
+              cJSON_IsTrue(cJSON_GetObjectItem(parameters, "status")) ? 1 : 0;
+        }
+        // 如果有其它参数类型，可继续补充
+
+        // 这里构造json，仅当至少有一个参数被设置时才发（可选）
+        if (targetSpeed != 0 || motorStatus != 0) {
+          cJSON *mqtt_json = cJSON_CreateObject();
+          cJSON_AddNumberToObject(mqtt_json, "id", id);
+          cJSON_AddStringToObject(mqtt_json, "connectType", connectType);
+          cJSON_AddNumberToObject(mqtt_json, "targetSpeed", targetSpeed);
+          cJSON_AddNumberToObject(mqtt_json, "motorStatus", motorStatus);
+
+          char *mqtt_json_str = cJSON_PrintUnformatted(mqtt_json);
+          // 这里调用你的mqtt发送函数
+          pro_mqtt_send_json(mqtt_json_str);
+
+          cJSON_free(mqtt_json_str);
+          cJSON_Delete(mqtt_json);
+        }
+      }
     }
 
   } else if (strcmp("tts", type_str) == 0) {
@@ -242,6 +281,9 @@ void app_main(void) {
 
   // 启动音频处理模块
   audio_process_start(audio_processor);
+
+  // 初始化mqtt
+  pro_mqtt_init();
 
   // 小智状态转为为空闲
   com_status_switch_status(IDLE);

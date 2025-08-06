@@ -17,6 +17,7 @@ idf_component_register(
   "./com/com_status.c"
   "./bsp/bsp_lcd.c"
   "./bsp/bsp_display.c"
+  "./protocol/pro_mqtt.c"
   INCLUDE_DIRS
   "."
   "./bsp"

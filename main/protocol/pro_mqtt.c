@@ -23,6 +23,15 @@ static char mqtt_topic[64] = DEFAULT_MQTT_TOPIC;
 // MQTT连接状态标志，volatile确保多线程环境下的可见性
 static volatile bool is_connected = false;
 
+void wait_for_mqtt_connected(void) {
+    int retry = 0;
+    while (!is_connected) {
+        ESP_LOGW(TAG, "MQTT还没连上，等待重试 #%d ...", ++retry);
+        vTaskDelay(pdMS_TO_TICKS(500));
+    }
+    ESP_LOGI(TAG, "MQTT连接成功！");
+}
+
 /**
  * @brief MQTT事件回调函数
  *
@@ -42,6 +51,7 @@ static void mqtt_event_handler(void *handler_args, esp_event_base_t base,
     ESP_LOGI(TAG, "MQTT connected!");
     // 设置连接状态为已连接
     is_connected = true;
+    send_hello_to_mqtt();
     break;
   case MQTT_EVENT_DISCONNECTED:
     // MQTT断开连接事件
@@ -59,37 +69,42 @@ static void mqtt_event_handler(void *handler_args, esp_event_base_t base,
   }
 }
 
+void send_hello_to_mqtt(void) {
+  // 构造JSON
+  cJSON *hello_json = cJSON_CreateObject();
+  cJSON_AddStringToObject(hello_json, "msg", "hello, this is XiaoZhi!!!!!");
+  // 你可以添加更多字段，比如设备ID、时间戳等
+  char *hello_str = cJSON_PrintUnformatted(hello_json);
+
+  pro_mqtt_send_json(hello_str); // 直接发到当前默认topic
+
+  cJSON_free(hello_str);
+  cJSON_Delete(hello_json);
+}
+
 /**
  * @brief 初始化MQTT客户端
  *
  * 配置并启动MQTT客户端，连接到默认的MQTT服务器
  */
 void pro_mqtt_init(void) {
-  // 明确声明并初始化所有子结构体，防止未初始化字段导致连接失败
   esp_mqtt_client_config_t mqtt_cfg = {0};
 
-  // ---- broker.address 子结构体 ----
-  mqtt_cfg.broker.address.uri = DEFAULT_MQTT_URI; // 推荐直接用uri
-  mqtt_cfg.broker.address.hostname =
-      DEFAULT_MQTT_HOST; // 可选，如果没uri可以用host+port
-  mqtt_cfg.broker.address.transport =
-      MQTT_TRANSPORT_OVER_WS;                       // 新版transport类型
-  mqtt_cfg.broker.address.path = DEFAULT_MQTT_PATH; // ws用/mqtt
-  mqtt_cfg.broker.address.port = DEFAULT_MQTT_PORT;
+  // 只配 uri！其余全不要写
+  mqtt_cfg.broker.address.uri = DEFAULT_MQTT_URI;
 
-  // ---- 可选项（比如加认证/客户端ID等）----
+  // 如果你需要账号、密码、client_id，可以加在下面
   // mqtt_cfg.credentials.username = "your_username";
   // mqtt_cfg.credentials.password = "your_password";
   // mqtt_cfg.credentials.client_id = "your_clientid";
 
-  // ---- 其他（根据需要补充） ----
-
-  // 初始化MQTT客户端
   client = esp_mqtt_client_init(&mqtt_cfg);
-  // 注册MQTT事件回调函数
+  if (client == NULL) {
+    ESP_LOGE(TAG, "MQTT client init failed, check config!");
+    return;
+  }
   esp_mqtt_client_register_event(client, ESP_EVENT_ANY_ID, mqtt_event_handler,
                                  NULL);
-  // 启动MQTT客户端
   esp_mqtt_client_start(client);
 }
 

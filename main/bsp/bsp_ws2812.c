@@ -43,8 +43,8 @@ void bsp_ws2812_init(void)
  */
 void bsp_ws2812_Led_On(void)
 {
-    led_strip_set_pixel(led_strip, 0, 5, 5, 5);
-    led_strip_set_pixel(led_strip, 1, 5, 5, 5);
+    led_strip_set_pixel(led_strip, 0, 50, 50, 50);
+    led_strip_set_pixel(led_strip, 1, 50, 50, 50);
 
     led_strip_refresh(led_strip);
 }

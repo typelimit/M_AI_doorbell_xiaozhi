@@ -40,30 +40,27 @@ struct audio_sr {
  * @param args
  */
 void audio_sr_feed_task(void *args) {
-
   MY_LOGE("audio feed task 开始运行...");
-  // 接收传进来的第一层结构体指针
   audio_sr_t *audio_sr = (audio_sr_t *)args;
-  // 把第一层结构体指针当中成员的数据取出来
   esp_afe_sr_iface_t *afe_handle = audio_sr->afe_handle;
   esp_afe_sr_data_t *afe_data = audio_sr->afe_data;
 
-  // 成员作为第二层结构体指针把数据传给内部声明的普通变量————其内容是单通道数据大小
   int feed_chunksize = afe_handle->get_feed_chunksize(afe_data);
-  // 获取通道数
   int feed_nch = afe_handle->get_feed_channel_num(afe_data);
-  // 计算单次输入数据大小(最大值)
   size_t len = feed_chunksize * feed_nch * sizeof(int16_t);
 
-  // 根据计算出的大小声明出一个可以容纳它的指针块————其内容是单次输入的数据
   int16_t *feed_buff = (int16_t *)malloc(len);
 
   while (1) {
+    // ---------- 关键点：跳过mic采集与AFE输入 ----------
+    if (xiaozhi_status == SPEAKING) {
+      // 正在播报，不采集mic数据，不喂数据
+      vTaskDelay(10);
+      continue;
+    }
 
-    // 从Mic读取数据
     bsp_es8311_read_from_mic((void *)feed_buff, len);
 
-    // 将数据写入AFE框架
     afe_handle->feed(afe_data, feed_buff);
 
     vTaskDelay(10);
@@ -72,7 +69,6 @@ void audio_sr_feed_task(void *args) {
 
 // 取数据任务
 void audio_sr_fetch_task(void *args) {
-
   MY_LOGE("audio fetch task 开始运行...");
 
   audio_sr_t *audio_sr = (audio_sr_t *)args;
@@ -82,59 +78,43 @@ void audio_sr_fetch_task(void *args) {
   assert(afe_handle);
   assert(afe_data);
 
-  // 获取单通道输入数据大小
   int feed_chunksize = afe_handle->get_feed_chunksize(afe_data);
-  // 获取通道数
   int feed_nch = afe_handle->get_feed_channel_num(afe_data);
-  // 计算单次输入数据大小(最大值)
   size_t len = feed_chunksize * feed_nch * sizeof(int16_t);
 
   while (1) {
+    // ---------- 关键点：直接跳过fetch和所有处理 ----------
+    if (xiaozhi_status == SPEAKING) {
+      vTaskDelay(10);
+      continue;
+    }
 
-    // 获取语音活动检测结果
     afe_fetch_result_t *result = afe_handle->fetch(afe_data);
-
-    // 获取音频结果
     int16_t *processed_audio = result->raw_data;
-
-    // 获取语音活动检测状态
     vad_state_t vad_state = result->vad_state;
-
-    // 获取唤醒状态
     wakenet_state_t wakeup_state = result->wakeup_state;
 
-    // 判断当前是否为唤醒词
     if (wakeup_state == WAKENET_DETECTED) {
-      // 修改唤醒状态
       audio_sr->is_waked = 1;
       if (audio_sr->wakenet_callback) {
         audio_sr->wakenet_callback(audio_sr->wakenet_args);
       }
     }
 
-    // 若当前为唤醒状态则处理语音数据
     if (audio_sr->is_waked) {
-
-      // 当语音识别状态变化时需要调用回调函数
+      // VAD 状态变化才回调
       if (vad_state != audio_sr->last_vad_state) {
-
-        // 当前语音检测状态赋给上一次
         audio_sr->last_vad_state = vad_state;
-
         if (audio_sr->vad_callback) {
-
           audio_sr->vad_callback(audio_sr->vad_args, vad_state);
         }
       }
-      // 若当前有人说话则保留语音
+      // 正常语音数据送Ringbuffer
       if (vad_state == VAD_SPEECH && xiaozhi_status == LISTENING) {
-        // MY_LOGE("开始循环抓取语音...");
         xRingbufferSend(audio_sr->ringbuffer, processed_audio, len,
                         portMAX_DELAY);
       }
     }
-    // 这个延时疑似多余
-    // vTaskDelay(10);
   }
 }
 

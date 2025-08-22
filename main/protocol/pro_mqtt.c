@@ -24,12 +24,12 @@ static char mqtt_topic[64] = DEFAULT_MQTT_TOPIC;
 static volatile bool is_connected = false;
 
 void wait_for_mqtt_connected(void) {
-    int retry = 0;
-    while (!is_connected) {
-        ESP_LOGW(TAG, "MQTT还没连上，等待重试 #%d ...", ++retry);
-        vTaskDelay(pdMS_TO_TICKS(500));
-    }
-    ESP_LOGI(TAG, "MQTT连接成功！");
+  int retry = 0;
+  while (!is_connected) {
+    ESP_LOGW(TAG, "MQTT还没连上，等待重试 #%d ...", ++retry);
+    vTaskDelay(pdMS_TO_TICKS(500));
+  }
+  ESP_LOGI(TAG, "MQTT连接成功！");
 }
 
 /**
@@ -88,15 +88,23 @@ void send_hello_to_mqtt(void) {
  * 配置并启动MQTT客户端，连接到默认的MQTT服务器
  */
 void pro_mqtt_init(void) {
-  esp_mqtt_client_config_t mqtt_cfg = {0};
-
-  // 只配 uri！其余全不要写
-  mqtt_cfg.broker.address.uri = DEFAULT_MQTT_URI;
-
-  // 如果你需要账号、密码、client_id，可以加在下面
-  // mqtt_cfg.credentials.username = "your_username";
-  // mqtt_cfg.credentials.password = "your_password";
-  // mqtt_cfg.credentials.client_id = "your_clientid";
+  esp_mqtt_client_config_t mqtt_cfg = {
+      .broker.address.uri = DEFAULT_MQTT_URI,
+      .network.disable_auto_reconnect = false,  // 自动重连
+      .network.reconnect_timeout_ms = 5000,     // 断线后每5s自动重连
+      .network.timeout_ms = 8000,               // 网络操作超时8秒
+      .network.refresh_connection_after_ms = 0, // 0=不强制刷新
+      .task.priority = 5,                       // 任务优先级可调整
+      .task.stack_size = 8192,                  // 足够大防止栈溢出
+      .buffer.size = 4096,                      // 收发缓冲区建议>=2k
+      .buffer.out_size = 4096,
+      .outbox.limit = 0,       // 不限制outbox（默认）
+      .session.keepalive = 30, // 协议层保活心跳(秒)
+      // 如果需要，可以加用户名、密码、client_id等
+      //.credentials.username = "...",
+      //.credentials.password = "...",
+      //.credentials.client_id = "...",
+  };
 
   client = esp_mqtt_client_init(&mqtt_cfg);
   if (client == NULL) {

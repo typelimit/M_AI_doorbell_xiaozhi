@@ -1,7 +1,7 @@
 {
     "version":            "1.2",
     "project_name":       "M_AI_doorbell_xiaozhi",
-    "project_version":    "50c2b6f8-dirty",
+    "project_version":    "d0591e44-dirty",
     "project_path":       "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi",
     "idf_path":           "D:/Espressif/frameworks/esp-idf-v5.3.3",
     "build_dir":          "D:/My_Code/M_ESP32/M_AI_doorbell_xiaozhi/build",
